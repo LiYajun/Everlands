@@ -10,6 +10,7 @@
 #include "Actor.h"
 #include "Judge.h"
 #include "Map.h"
+#include "InputControl.h"
 
 GameManager *GameManager::shareGameManager(void)
 {
@@ -51,7 +52,34 @@ void GameManager::resetALl(void)
 {
     
 }
-void GameManager::gameLogic(void)
+bool GameManager::gameLogic(void)
 {
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

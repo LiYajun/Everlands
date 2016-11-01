@@ -6,9 +6,10 @@
 //
 //
 
-#ifndef GameManager_hpp
-#define GameManager_hpp
+#ifndef GameManager_h
+#define GameManager_h
 
+#include <vector>
 /*
  单局游戏管理者 (GameManager)
  行为：  创建(创建棋手，裁判，地图，展示类,控制器，记录类) 	create()
@@ -20,6 +21,7 @@
 class Judge;
 class Actor;
 class Map;
+class InputControl;
 
 class GameManager
 {
@@ -27,13 +29,14 @@ public:
     static GameManager * shareGameManager(void);
     void destoryAll(void);
     void resetALl(void);
-    void gameLogic(void);
+    bool gameLogic(void);
 private:
     static GameManager* gameShare;
     bool creaeteAll(void);
     bool init(void);
 private:
     Judge *  judge;
+    InputControl * inputController;
     std::vector<Actor*> allActors;
     Map *    map;
     
