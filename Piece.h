@@ -15,7 +15,7 @@
 	类型(老虎，狮子)        (type:PieceType)
 	逻辑坐标               (logical coordinates)
 	攻击力                 (attactValue)
- 
+    步长                   (step)
  */
 #include "Coord.h"
 

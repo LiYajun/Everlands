@@ -24,6 +24,7 @@ class InputControl
 public:
     bool addOneTouchCoord(TouchCoord coord);
     TouchCoord getUserTouchCoord(void);
+    Coord convertTouchToCoord(TouchCoord touchCoord);
 private:
     std::queue<TouchCoord> touchQue;
 };

@@ -18,11 +18,17 @@ bool InputControl::addOneTouchCoord(TouchCoord coord)
         return false;
     }
 }
+Coord InputControl::convertTouchToCoord(TouchCoord touchCoord)
+{
+
+   Coord coord;
+   return coord;
+}
 TouchCoord InputControl::getUserTouchCoord(void)
 {
     if(this->touchQue.size()>0){
         return this->touchQue.front();
     }
-   
-    return TouchCoord();
+   TouchCoord noTouch;
+    return noTouch;
 }
