@@ -7,22 +7,18 @@
 //
 
 #include "InputControl.h"
+//#inlcude "Coord.h"
+class Coord;
 
 bool InputControl::addOneTouchCoord(TouchCoord coord)
 {
-    unsigned int size = this->touchQue.size();
+    size_t size = this->touchQue.size();
     this->touchQue.push(coord);
     if(this->touchQue.size()-size == 1){
         return true;
     }else{
         return false;
     }
-}
-Coord InputControl::convertTouchToCoord(TouchCoord touchCoord)
-{
-
-   Coord coord;
-   return coord;
 }
 TouchCoord InputControl::getUserTouchCoord(void)
 {
@@ -32,3 +28,10 @@ TouchCoord InputControl::getUserTouchCoord(void)
    TouchCoord noTouch;
     return noTouch;
 }
+Coord InputControl::convertTouchToCoord(TouchCoord touchCoord)
+{
+
+   Coord coord;
+   return coord;
+}
+

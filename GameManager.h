@@ -15,14 +15,22 @@
  行为：  创建(创建棋手，裁判，地图，展示类,控制器，记录类) 	create()
 	初始化							init()
 	销毁游戏角色						destroyAll()
-	重置游戏角色  						resetAll()
-	游戏逻辑                                                gameLogic()
+	重置游戏角色  					resetAll()
+	游戏逻辑                         gameLogic()
  */
 class Judge;
 class Actor;
 class Map;
 class InputControl;
+class Coord;
 
+
+struct ClickInfo {
+    unsigned int type;  //invaild; want eat; want move;
+};
+struct AfterOnePieceInfo {
+    unsigned int type; //game over; 
+};
 class GameManager
 {
 public:

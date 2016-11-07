@@ -37,6 +37,7 @@ typedef enum {
 	移除棋子                 reMovePiece(pieceRef piece)
  改变棋子的逻辑坐标	 changePieceLogicCoord(logicCoord)
  */
+
 class Actor
 {
 public:
@@ -58,7 +59,10 @@ public:
      *
      *  @return 移除成功了吗
      */
+    void selectOnePice();
+    
     bool reMovePiece(Piece* piece);
+    
     
     bool changePieceLogicCoord(Coord LogicCoord);
     
