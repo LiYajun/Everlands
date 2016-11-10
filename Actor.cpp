@@ -8,7 +8,7 @@
 
 #include "Actor.h"
 #include "Piece.h"
-#include "MapTile.h"
+#include "Map.h"
 #include "GameManager.h"
 
 int Actor::actorID;
@@ -36,11 +36,11 @@ bool Actor::init(int ID, short color)
     return true;
 }
 //走棋流程
-void Actor::clickMapTile(MapTile *mapTile)
+void Actor::clickMapTile(Tile *mapTile)
 {
     
-    Piece* piece = mapTile->getPiece();
-    Coord  coord = mapTile->getCoord();
+    Piece* piece = mapTile->piece;
+    Coord  coord = mapTile->coord;
     
     GameManager * share = GameManager::shareGameManager();
     if(this->statu == no_choose_piece_statu) //还没选过棋子
@@ -73,12 +73,12 @@ void Actor::clickMapTile(MapTile *mapTile)
                 //    this->selectedPieceRef = piece;
                 
                 share->info->whatToDo = wantSelectPiece;
-                share->info->coords.pursh_back(coord);
+                share->info->coords.push_back(coord);
             }else                                //选择别人的棋子，吃棋子
             {
                 
                 share->info->whatToDo = wantEatOtherPiece;
-                share->info->coords.pursh_back(coord);
+                share->info->coords.push_back(coord);
                 //判断能不能吃掉
                 /*
                     canMove = Map->judgeMove(currentCoord, coord);

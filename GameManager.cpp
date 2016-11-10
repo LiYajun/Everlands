@@ -12,6 +12,7 @@
 #include "Map.h"
 #include "InputControl.h"
 
+static GameManager* gameShare;
 GameManager *GameManager::shareGameManager(void)
 {
     if(gameShare == nullptr)
@@ -63,9 +64,11 @@ bool GameManager::gameLogic(void)
     //获取逻辑坐标
     Coord coord = inputController->convertTouchToCoord(oneTouch);
     //获取地图片元
-    MapTile * oneMapTile = map->getMapTle(coord);
+    Tile * oneMapTile = map->getTile(coord);
     //获取当前玩家
-    Actor * currentActor = judge->getCurrentActor();
+    Actor * currentActor = nullptr;
+    //currentActor = judge->getCurrentActor();
+    
     //玩家点击处理
     currentActor->clickMapTile(oneMapTile);
     
@@ -81,6 +84,7 @@ bool GameManager::gameLogic(void)
     {
         
     }
+    return true;
 }
 
 

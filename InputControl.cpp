@@ -7,7 +7,7 @@
 //
 
 #include "InputControl.h"
-//#inlcude "Coord.h"
+#include "Coord.h"
 class Coord;
 
 bool InputControl::addOneTouchCoord(TouchCoord coord)

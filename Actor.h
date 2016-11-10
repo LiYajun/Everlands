@@ -15,7 +15,7 @@
 #include "GameManager.h"
 
 class Piece;
-class MapTile;
+class Tile;
 
 typedef enum {
     no_choose_piece_statu = 0,
@@ -52,7 +52,7 @@ public:
      *
      *  @return  
      */
-    void clickMapTile(MapTile* mapTile);
+    void clickMapTile(Tile* mapTile);
     /**
      *  @brief 移除棋子
      *

@@ -55,7 +55,7 @@ public:
     Info *               info;
     AfterInfo *          afterInfo;
 private:
-    static GameManager* gameShare;
+
     bool creaeteAll(void);
     bool init(void);
 private:
