@@ -72,18 +72,46 @@ bool GameManager::gameLogic(void)
     //玩家点击处理
     currentActor->clickMapTile(oneMapTile);
     
-    if(info->whatToDo == invaildOper)
-    {
+    if(info->whatToDo == invaildOper) {
+        
+    }else{
+        if(info->whatToDo == wantSelectPiece) {
+            Piece * piece = oneMapTile->piece;
+            currentActor->selectOnePiece(piece);
+        }else if(info->whatToDo == wantEatOtherPiece) {
+            bool canEat = true; //canEat = judge->JudageCanMoveAndEat();
+            if(canEat == true) {
+                currentActor->changePieceLogicCoord(coord);
+                map->updateTiles(info->coords);
+                short otherColor   = oneMapTile->color;
+                Actor * otherActor = nullptr; // otherActor = judge->getActor(otherColor);
+                Piece * piece = oneMapTile->piece;
+                otherActor->reMovePiece(piece);
+            }
+        }else if(info->whatToDo == wantMove){
+            bool canMove = true;  //canMove = judge->JudgeCanMove();
+            if(canMove == true) {
+                currentActor->changePieceLogicCoord(coord);
+                map->updateTiles(info->coords);
+            }
+            
+        }
         
     }
-    else
-    {
-        
-    }
+    
+    
     if(afterInfo)
     {
-        
+        judge->calculateActorScore(currentActor);
+        judge->checkOneActorOut(currentActor);
+        if(judge->checkOneGameOver() == true)
+        {
+            judge->calculateGameResult();
+            return false;
+        }
+        judge->switchNextActor();
     }
+    
     return true;
 }
 

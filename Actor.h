@@ -60,12 +60,12 @@ public:
      *
      *  @return 移除成功了吗
      */
-    void selectOnePice();
+    void selectOnePiece(Piece* piece);
     
-    bool reMovePiece(Piece* piece);
+    void reMovePiece(Piece* piece);
     
     
-    bool changePieceLogicCoord(Coord LogicCoord);
+    void changePieceLogicCoord(Coord LogicCoord);
     
 private:
     static int actorID;
