@@ -63,6 +63,8 @@ bool GameManager::gameLogic(void)
     }
     //获取逻辑坐标
     Coord coord = inputController->convertTouchToCoord(oneTouch);
+    //判断逻辑坐标有效
+    //if(coord.isVaild() == false) return true;
     //获取地图片元
     Tile * oneMapTile = map->getTile(coord);
     //获取当前玩家
