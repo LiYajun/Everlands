@@ -103,17 +103,14 @@ void Actor::changePieceLogicCoord(Coord LogicCoord)
     //return true;
 }
 
-void Actor::switchStatu(ActorStatu oldStatu)
+void Actor::switchStatu( )
 {
-    if(oldStatu == no_choose_piece_statu)
-    {
-        this->statu = selected_one_piece_statu;
-        
-    }else if(oldStatu == selected_one_piece_statu)
-    {
-        this->statu = moving_piece_statu;
-    }else
-    {
+    ActorStatu oldStatu = statu;
+    if(oldStatu == no_choose_piece_statu) {
+         statu = selected_one_piece_statu;
+    }else if(oldStatu == selected_one_piece_statu){
+         statu = no_choose_piece_statu;
+    }else  {
         
     }
     

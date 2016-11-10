@@ -64,10 +64,10 @@ public:
     
     
     void changePieceLogicCoord(Coord LogicCoord);
-    
+     void switchStatu( void );
 private:
     static int actorID;
-    void switchStatu(ActorStatu oldStatu);
+   
     int         ID;                                 //编号
     short       color;                              //阵营（颜色）
     ActorStatu  statu;                              //棋手状态
