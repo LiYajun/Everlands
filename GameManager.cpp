@@ -75,11 +75,12 @@ bool GameManager::gameLogic(void)
     currentActor->clickMapTile(oneMapTile);
     
     if(info->whatToDo == invaildOper) {
-        
+        return true;
     }else{
         if(info->whatToDo == wantSelectPiece) {
             Piece * piece = oneMapTile->piece;
             currentActor->selectOnePiece(piece);
+            currentActor->switchStatu();
         }else if(info->whatToDo == wantEatOtherPiece) {
             bool canEat = true; //canEat = judge->JudageCanMoveAndEat();
             if(canEat == true) {
@@ -89,12 +90,18 @@ bool GameManager::gameLogic(void)
                 Actor * otherActor = nullptr; // otherActor = judge->getActor(otherColor);
                 Piece * piece = oneMapTile->piece;
                 otherActor->reMovePiece(piece);
+                currentActor->switchStatu();
+            }else {
+                
             }
         }else if(info->whatToDo == wantMove){
             bool canMove = true;  //canMove = judge->JudgeCanMove();
             if(canMove == true) {
                 currentActor->changePieceLogicCoord(coord);
                 map->updateTiles(info->coords);
+                currentActor->switchStatu();
+            }else{
+                
             }
             
         }
@@ -112,6 +119,7 @@ bool GameManager::gameLogic(void)
             return false;
         }
         judge->switchNextActor();
+        
     }
     
     return true;
