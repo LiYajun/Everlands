@@ -15,7 +15,7 @@
  行为：  创建(创建棋手，裁判，地图，展示类,控制器，记录类) 	create()
 	初始化							init()
 	销毁游戏角色						destroyAll()
-	重置游戏角色  					resetAll()
+	重置游戏角色                      resetAll()
 	游戏逻辑                         gameLogic()
  */
 class Judge;
@@ -25,12 +25,26 @@ class InputControl;
 class Coord;
 
 
-struct ClickInfo {
-    unsigned int type;  //invaild; want eat; want move;
+#define invaildOper         0
+#define wantSelectPiece     1
+#define wantEatOtherPiece   2
+#define wantMove            3
+
+struct  Info
+{
+    int whatToDo;
+    std::vector<Coord> coords;
 };
-struct AfterOnePieceInfo {
-    unsigned int type; //game over; 
+struct  AfterInfo
+{
+    int scoreColor;
+    int Score;
+    int failColor;
+    int isGameOver;
 };
+
+
+ 
 class GameManager
 {
 public:
@@ -38,15 +52,18 @@ public:
     void destoryAll(void);
     void resetALl(void);
     bool gameLogic(void);
+    Info *               info;
+    AfterInfo *          afterInfo;
 private:
     static GameManager* gameShare;
     bool creaeteAll(void);
     bool init(void);
 private:
-    Judge *  judge;
-    InputControl * inputController;
+
+    Judge *             judge;
+    InputControl *      inputController;
     std::vector<Actor*> allActors;
-    Map *    map;
+    Map *               map;
     
 };
 #endif /* GameManager_hpp */

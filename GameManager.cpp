@@ -67,7 +67,20 @@ bool GameManager::gameLogic(void)
     //获取当前玩家
     Actor * currentActor = judge->getCurrentActor();
     //玩家点击处理
-     currentActor->clickMapTile(oneMapTile);
+    currentActor->clickMapTile(oneMapTile);
+    
+    if(info->whatToDo == invaildOper)
+    {
+        
+    }
+    else
+    {
+        
+    }
+    if(afterInfo)
+    {
+        
+    }
 }
 
 

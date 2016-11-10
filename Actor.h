@@ -12,6 +12,7 @@
 
 #include <vector>
 #include "Coord.h"
+#include "GameManager.h"
 
 class Piece;
 class MapTile;
