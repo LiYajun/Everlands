@@ -6,7 +6,7 @@
 //
 //
 
-#include "GameManager.hpp"
+#include "GameManager.h"
 #include "Actor.h"
 #include "Judge.h"
 #include "Map.h"
@@ -52,9 +52,22 @@ void GameManager::resetALl(void)
 {
     
 }
+//return false 表示游戏结束
 bool GameManager::gameLogic(void)
 {
-    
+   TouchCoord oneTouch = inputController->getUserTouchCoord();
+    if(oneTouch.isNoTouch()==true)
+    {
+        return true;
+    }
+    //获取逻辑坐标
+    Coord coord = inputController->convertTouchToCoord(oneTouch);
+    //获取地图片元
+    MapTile * oneMapTile = map->getMapTle(coord);
+    //获取当前玩家
+    Actor * currentActor = judge->getCurrentActor();
+    //玩家点击处理
+     currentActor->clickMapTile(oneMapTile);
 }
 
 
