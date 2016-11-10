@@ -3,8 +3,7 @@
 
 Coord::Coord()
 {
-    x = 0;
-    y = 0;
+    *this = CoordInvalid;
 }
 
 Coord::Coord(int x, int y)
@@ -21,12 +20,17 @@ Coord Coord::operator=(const Coord c)
     return *this;
 }
 
-bool Coord::operator==(const Coord c)
+bool Coord::operator==(const Coord c) const
 {
     return (x == c.x) && (y == c.y);
 }
 
-bool Coord::operator!=(const Coord c)
+bool Coord::operator!=(const Coord c) const
 {
     return (x != c.x) || (y != c.y);
+}
+
+bool Coord::isInvalid() const
+{
+    return (CoordInvalid == *this);
 }

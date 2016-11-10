@@ -11,6 +11,18 @@ Judge::~Judge()
     
 }
 
+Actor *Judge::getCurrentActor()
+{
+    Actor *result = NULL;
+
+    if (0 <= m_curIndex && m_aliveActors.size() > m_curIndex)
+    {
+        result = m_aliveActors[m_curIndex];
+    }
+
+    return result;
+}
+
 void Judge::switchNextActor()
 {
     m_curIndex = (m_curIndex + 1) % m_aliveActors.size();

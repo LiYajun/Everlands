@@ -2,8 +2,7 @@
 
 #include <vector>
 #include "Coord.h"
-//#include "Actor.h"
-class Actor;
+#include "Actor.h"
 
 using std::vector;
 
@@ -14,6 +13,7 @@ public:
     Judge();
     virtual ~Judge();
 
+    Actor *getCurrentActor();               // 取到当前选手
     void switchNextActor();                 // 切换到下一个选手
     bool checkOneActorOut(Actor *actor);    // 判断玩家是否出局
     bool checkPieceRule(Coord coord);       // 判断走棋是否合理

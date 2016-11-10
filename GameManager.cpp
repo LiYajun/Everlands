@@ -63,7 +63,7 @@ bool GameManager::gameLogic(void)
     //获取逻辑坐标
     Coord coord = inputController->convertTouchToCoord(oneTouch);
     //获取地图片元
-    MapTile * oneMapTile = map->getMapTle(coord);
+    MapTile * oneMapTile = map->getMapTile(coord);
     //获取当前玩家
     Actor * currentActor = judge->getCurrentActor();
     //玩家点击处理

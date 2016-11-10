@@ -7,8 +7,8 @@
 //
 
 #include "InputControl.h"
-//#inlcude "Coord.h"
-class Coord;
+#include "Coord.h"
+
 
 bool InputControl::addOneTouchCoord(TouchCoord coord)
 {
@@ -30,7 +30,7 @@ TouchCoord InputControl::getUserTouchCoord(void)
 }
 Coord InputControl::convertTouchToCoord(TouchCoord touchCoord)
 {
-
+    
    Coord coord;
    return coord;
 }

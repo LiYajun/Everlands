@@ -9,6 +9,7 @@
 #include "Actor.h"
 #include "Piece.h"
 #include "MapTile.h"
+#include <assert.h>
 
 int Actor::actorID;
 Actor * Actor::createWith(int ID, short color)
