@@ -23,7 +23,9 @@ bool InputControl::addOneTouchCoord(TouchCoord coord)
 TouchCoord InputControl::getUserTouchCoord(void)
 {
     if(this->touchQue.size()>0){
-        return this->touchQue.front();
+        TouchCoord touch = touchQue.front();
+        touchQue.pop();
+        return  touch;
     }
    TouchCoord noTouch;
     return noTouch;

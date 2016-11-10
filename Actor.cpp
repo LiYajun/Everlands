@@ -6,10 +6,9 @@
 //
 //
 
-#include "Actor.h"
-#include "Piece.h"
-#include "MapTile.h"
 #include <assert.h>
+#include "Actor.h"
+
 
 int Actor::actorID;
 Actor * Actor::createWith(int ID, short color)
@@ -38,22 +37,28 @@ bool Actor::init(int ID, short color)
 //走棋流程
 void Actor::clickMapTile(MapTile *mapTile)
 {
-    assert(mapTile);
+    
     Piece* piece = mapTile->getPiece();
     Coord  coord = mapTile->getCoord();
+    
+    GameManager * share = GameManager::shareGameManager();
     if(this->statu == no_choose_piece_statu) //还没选过棋子
     {
         if(piece !=NULL)
         {
             if(piece->getColor() == this->color)
             {
-                this->selectedPieceRef = piece;
-                this->switchStatu(this->statu);
+             
+                share->info->whatToDo = wantSelectPiece;
+                share->info->coords.push_back(coord);
             }
-            else
+            else {
+                share->info->whatToDo = invaildOper;
                 return;
+            }
         }else
         {
+            share->info->whatToDo = invaildOper;
             return;
         }
         
@@ -63,60 +68,45 @@ void Actor::clickMapTile(MapTile *mapTile)
         {
             if(piece->getColor() == this->color) //选择的自己的棋子
             {
-                if(this->selectedPieceRef != piece)
-                    this->selectedPieceRef = piece;
+                share->info->whatToDo = wantSelectPiece;
+                share->info->coords.push_back(coord);
             }else                                //选择别人的棋子，吃棋子
             {
-                //判断能不能吃掉
-                /*
-                    canMove = Map->judgeMove(currentCoord, coord);
-                    if canMove == YES
-                    {
-                        canEat = Map->judgeEat(currentCoord, coord);
-                        if canEat == YES
-                        {
-                            this->changePieceLogicCoord(coord);
-                            map->dealWithInfo(currentCoord, coord);
-                        }else
-                            return;
-                    }else
-                        return
-                 */
-                
-                //this->switchStatu(this->statu);
+                share->info->whatToDo = wantEatOtherPiece;
+                share->info->coords.push_back(coord);
             }
         }else   //移动操作
         {
-            //判断能不能移动到空地去
-            /*
-               canMove = Map->judgeMove(currentCoord, coord);
-               if canMove==YES
-                this->changePieceLogicCoord(coord);
-                map->dealWithInfo(currentCoord, coord);
-               else
-                return
-            */
-            
+            share->info->whatToDo = wantMove;
+            share->info->coords.push_back(coord);
         }
+    }else
+    {
+        share->info->whatToDo = invaildOper;
     }
     
 }
-
-bool Actor::reMovePiece(Piece *piece)
+void Actor::selectOnePiece(Piece* piece)
+{
+    if(this->selectedPieceRef != nullptr){
+        
+    }
+    this->selectedPieceRef = piece;
+}
+void Actor::reMovePiece(Piece *piece)
 {
     
-    return true;
+    //return true;
 }
-bool Actor::changePieceLogicCoord(Coord LogicCoord)
+void Actor::changePieceLogicCoord(Coord LogicCoord)
 {
-    return true;
+    //return true;
 }
 
 void Actor::switchStatu(ActorStatu oldStatu)
 {
     if(oldStatu == no_choose_piece_statu)
     {
-        
         this->statu = selected_one_piece_statu;
         
     }else if(oldStatu == selected_one_piece_statu)

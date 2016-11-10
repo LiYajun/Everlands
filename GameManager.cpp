@@ -12,6 +12,7 @@
 #include "Map.h"
 #include "InputControl.h"
 
+static GameManager* gameShare;
 GameManager *GameManager::shareGameManager(void)
 {
     if(gameShare == nullptr)
@@ -62,12 +63,58 @@ bool GameManager::gameLogic(void)
     }
     //获取逻辑坐标
     Coord coord = inputController->convertTouchToCoord(oneTouch);
+    //判断逻辑坐标有效
+    //if(coord.isVaild() == false) return true;
     //获取地图片元
     MapTile * oneMapTile = map->getMapTile(coord);
     //获取当前玩家
-    Actor * currentActor = judge->getCurrentActor();
+    Actor * currentActor = nullptr;
+    //currentActor = judge->getCurrentActor();
+    
     //玩家点击处理
-     currentActor->clickMapTile(oneMapTile);
+    currentActor->clickMapTile(oneMapTile);
+    
+    if(info->whatToDo == invaildOper) {
+        
+    }else{
+        if(info->whatToDo == wantSelectPiece) {
+            Piece * piece = oneMapTile->getPiece();
+            currentActor->selectOnePiece(piece);
+        }else if(info->whatToDo == wantEatOtherPiece) {
+            bool canEat = true; //canEat = judge->JudageCanMoveAndEat();
+            if(canEat == true) {
+                currentActor->changePieceLogicCoord(coord);
+                map->updateTiles(info->coords);
+                short otherColor   = oneMapTile->getColor();
+                Actor * otherActor = nullptr; // otherActor = judge->getActor(otherColor);
+                Piece * piece = oneMapTile->getPiece();
+                otherActor->reMovePiece(piece);
+            }
+        }else if(info->whatToDo == wantMove){
+            bool canMove = true;  //canMove = judge->JudgeCanMove();
+            if(canMove == true) {
+                currentActor->changePieceLogicCoord(coord);
+                map->updateTiles(info->coords);
+            }
+            
+        }
+        
+    }
+    
+    
+    if(afterInfo)
+    {
+        judge->calculateActorScore(currentActor);
+        judge->checkOneActorOut(currentActor);
+        if(judge->checkOneGameOver() == true)
+        {
+            judge->calculateGameResult();
+            return false;
+        }
+        judge->switchNextActor();
+    }
+    
+    return true;
 }
 
 

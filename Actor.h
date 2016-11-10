@@ -11,10 +11,9 @@
 
 
 #include <vector>
-#include "Coord.h"
+#include "Map.h"
+#include "GameManager.h"
 
-class Piece;
-class MapTile;
 
 typedef enum {
     no_choose_piece_statu = 0,
@@ -59,12 +58,12 @@ public:
      *
      *  @return 移除成功了吗
      */
-    void selectOnePice();
+    void selectOnePiece(Piece* piece);
     
-    bool reMovePiece(Piece* piece);
+    void reMovePiece(Piece* piece);
     
     
-    bool changePieceLogicCoord(Coord LogicCoord);
+    void changePieceLogicCoord(Coord LogicCoord);
     
 private:
     static int actorID;
