@@ -68,9 +68,8 @@ bool GameManager::gameLogic(void)
     //获取地图片元
     MapTile * oneMapTile = map->getMapTile(coord);
     //获取当前玩家
-    Actor * currentActor = nullptr;
-    //currentActor = judge->getCurrentActor();
-    
+    Actor * currentActor = judge->getCurrentActor();
+   
     //玩家点击处理
     currentActor->clickMapTile(oneMapTile);
     
@@ -79,7 +78,6 @@ bool GameManager::gameLogic(void)
     }else{
         if(info->whatToDo == wantSelectPiece) {
             Piece * piece = oneMapTile->getPiece();
-            
             currentActor->selectOnePiece(piece);
             currentActor->switchStatu();
         }else if(info->whatToDo == wantEatOtherPiece) {

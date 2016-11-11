@@ -34,6 +34,10 @@ bool Actor::init(int ID, short color)
     actorID++;
     return true;
 }
+short Actor::getColor(void)
+{
+    return  color;
+}
 //走棋流程
 void Actor::clickMapTile(MapTile *mapTile)
 {

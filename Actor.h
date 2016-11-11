@@ -44,6 +44,8 @@ public:
     bool init(int ID, short color);
     ~Actor();
 
+    short getColor(void);
+    
     void clickMapTile(MapTile* mapTile);
     
     void selectOnePiece(Piece* piece);
