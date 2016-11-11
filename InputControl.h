@@ -10,7 +10,9 @@
 #define InputControl_h
 
 #include <queue>
-class Coord;
+#include "Coord.h"
+using namespace std;
+
 struct TouchCoord
 {
     float x,y;
@@ -31,10 +33,10 @@ struct TouchCoord
 class InputControl
 {
 public:
-    bool addOneTouchCoord(TouchCoord coord);
-    TouchCoord getUserTouchCoord(void);
+    bool  addOneCoord(Coord coord);
+    Coord getInputCoord(void);
     Coord convertTouchToCoord(TouchCoord touchCoord);
 private:
-    std::queue<TouchCoord> touchQue;
+    queue<Coord> coordsQue;
 };
 #endif /* InputControl_hpp */

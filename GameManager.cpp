@@ -56,15 +56,11 @@ void GameManager::resetALl(void)
 //return false 表示游戏结束
 bool GameManager::gameLogic(void)
 {
-   TouchCoord oneTouch = inputController->getUserTouchCoord();
-    if(oneTouch.isNoTouch()==true)
-    {
-        return true;
-    }
+
     //获取逻辑坐标
-    Coord coord = inputController->convertTouchToCoord(oneTouch);
+    Coord coord = inputController->getInputCoord();
     //判断逻辑坐标有效
-    //if(coord.isVaild() == false) return true;
+    if(coord == CoordInvalid) return true;
     //获取地图片元
     MapTile * oneMapTile = map->getMapTile(coord);
     //获取当前玩家
@@ -91,6 +87,7 @@ bool GameManager::gameLogic(void)
                 otherActor->reMovePiece(piece);
                 currentActor->switchStatu();
                 clearInfo();
+                afterInfo->oneStepOver = true;
             }else {
                 
             }
@@ -101,6 +98,7 @@ bool GameManager::gameLogic(void)
                 map->updateTiles(info->coords);
                 currentActor->switchStatu();
                 clearInfo();
+                afterInfo->oneStepOver = true;
             }else{
                 
             }
@@ -108,18 +106,19 @@ bool GameManager::gameLogic(void)
         
     }
     
-    if(afterInfo)
-    {
-        judge->calculateActorScore(currentActor);
-        judge->checkOneActorOut(currentActor);
-        if(judge->checkOneGameOver() == true)
-        {
+   
+        //judge->calculateActorScore(currentActor);
+        //judge->checkOneActorOut(currentActor);
+    if(afterInfo->oneStepOver == true) {
+
+        if(judge->checkOneGameOver() == true) {
             judge->calculateGameResult();
             return false;
         }
-        judge->switchNextActor();
         
+        judge->switchNextActor();
     }
+    
     
     return true;
 }

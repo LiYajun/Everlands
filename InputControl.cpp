@@ -10,25 +10,25 @@
 #include "Coord.h"
 
 
-bool InputControl::addOneTouchCoord(TouchCoord coord)
+bool InputControl::addOneCoord(Coord coord)
 {
-    size_t size = this->touchQue.size();
-    this->touchQue.push(coord);
-    if(this->touchQue.size()-size == 1){
+    size_t size = this->coordsQue.size();
+    this->coordsQue.push(coord);
+    if(this->coordsQue.size()-size == 1){
         return true;
     }else{
         return false;
     }
 }
-TouchCoord InputControl::getUserTouchCoord(void)
+Coord InputControl::getInputCoord( )
 {
-    if(this->touchQue.size()>0){
-        TouchCoord touch = touchQue.front();
-        touchQue.pop();
-        return  touch;
+    if(this->coordsQue.size()>0){
+        Coord logicCoord = coordsQue.front();
+        this->coordsQue.pop();
+        return  logicCoord;
     }
-   TouchCoord noTouch;
-    return noTouch;
+ 
+    return CoordInvalid;
 }
 Coord InputControl::convertTouchToCoord(TouchCoord touchCoord)
 {

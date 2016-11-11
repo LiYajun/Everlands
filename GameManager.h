@@ -37,6 +37,7 @@ struct  Info
 };
 struct  AfterInfo
 {
+    bool oneStepOver; //一步棋下棋结束
     int scoreColor;
     int Score;
     int failColor;
