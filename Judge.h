@@ -13,13 +13,15 @@ public:
     Judge();
     virtual ~Judge();
 
-    Actor *getCurrentActor();               // 取到当前选手
-    void switchNextActor();                 // 切换到下一个选手
-    bool checkOneActorOut(Actor *actor);    // 判断玩家是否出局
-    bool checkPieceRule(Coord coord);       // 判断走棋是否合理
-    bool checkOneGameOver();                // 判断是否游戏结束
-    void calculateGameResult();             // 计算游戏结果
-    int calculateActorScore(Actor *actor);  // 计算当前选手得分
+    Actor *getCurrentActor();                       // 取到当前选手
+    Actor *getActor(int color);                     // 获取指定颜色玩家
+    void switchNextActor();                         // 切换到下一个选手
+    bool checkOneActorOut(Actor *actor);            // 判断玩家是否出局
+    bool judageCanMove(vector<Coord> coords);       // 判断能否走棋
+    bool judageCanMoveAndEat(vector<Coord> coords); // 判断能否进行吃子操作
+    bool checkOneGameOver();                        // 判断是否游戏结束
+    void calculateGameResult();                     // 计算游戏结果
+    int calculateActorScore(Actor *actor);          // 计算当前选手得分
 
 private:
     vector<Actor *> m_allActors;            // 所有选手

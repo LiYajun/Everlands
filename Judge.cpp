@@ -23,6 +23,22 @@ Actor *Judge::getCurrentActor()
     return result;
 }
 
+Actor *Judge::getActor(int color)
+{
+    Actor *result = NULL;
+
+    for (vector<Actor *>::iterator it = m_aliveActors.begin(); m_aliveActors.end() != it; it++)
+    {
+        if (color == (*it)->getColor())
+        {
+            result = *it;
+            break;
+        }
+    }
+
+    return result;
+}
+
 void Judge::switchNextActor()
 {
     m_curIndex = (m_curIndex + 1) % m_aliveActors.size();
@@ -33,19 +49,14 @@ bool Judge::checkOneActorOut(Actor *actor)
     return false;
 }
 
-bool Judge::checkPieceRule(Coord coord)
+bool Judge::judageCanMove(vector<Coord> coords)
 {
-    static int i = 0;
-    i++;
+    return true;
+}
 
-    if (0 == i % 3)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+bool Judge::judageCanMoveAndEat(vector<Coord> coords)
+{
+    return true;
 }
 
 bool Judge::checkOneGameOver()
