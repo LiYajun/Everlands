@@ -42,7 +42,9 @@ bool GameManager::init(void)
 //创建所有选手， 地图， 棋子， 裁判
 bool GameManager::creaeteAll(void)
 {
-    
+    do {
+        
+    }while(0);
     return true;
 }
 void GameManager::destoryAll(void)

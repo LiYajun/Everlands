@@ -40,10 +40,11 @@ typedef enum {
 class Actor
 {
 public:
-    static Actor * createWith(int ID, short color);
-    bool init(int ID, short color);
+    static Actor * createWith(short color);
+    bool init(short color);
+    
     ~Actor();
-
+    
     short getColor(void);
     
     void clickMapTile(MapTile* mapTile);
@@ -56,13 +57,11 @@ public:
     
     void switchStatu( void );
 private:
-    static int actorID;
-   
-    int         ID;                                 //编号
+    unsigned int   ID;                              //编号,每个对象有一个唯一的
     short       color;                              //阵营（颜色）
     ActorStatu  statu;                              //棋手状态
     std::vector<Actor*> allPieces;                  //拥有的棋子集合
-    std::vector<Actor*> alivePieces;            //可活动的棋子集合
+    std::vector<Actor*> alivePieces;                //可活动的棋子集合
     unsigned    score;                              //当前得分
     Piece *     selectedPieceRef;                   //选中的棋子引用
     

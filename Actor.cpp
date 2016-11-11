@@ -10,12 +10,12 @@
 #include "Actor.h"
 
 
-int Actor::actorID;
-Actor * Actor::createWith(int ID, short color)
+static unsigned int actorID = 1;
+Actor * Actor::createWith( short color)
 {
    
     Actor *pRet = new(std::nothrow) Actor();
-    if (pRet && pRet->init(ID, color))
+    if (pRet && pRet->init(color))
     {
         return pRet;
     }
@@ -26,9 +26,8 @@ Actor * Actor::createWith(int ID, short color)
         return nullptr;
     }
 }
-bool Actor::init(int ID, short color)
+bool Actor::init(short color)
 {
-   
     this->ID    = actorID;
     this->color = color;
     actorID++;

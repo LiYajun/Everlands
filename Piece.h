@@ -27,9 +27,21 @@ typedef enum {
 class Piece
 {
 public:
+    static Piece * create(short aColor,
+                          Coord alogicCoord,
+                          PieceType aType,
+                          int aAttackValue,
+                          int aStep);
+    
+    bool init(short aColor,
+              Coord alogicCoord,
+              PieceType aType,
+              int aAttackValue,
+              int aStep);
+    
     short getColor(void);
 private:
-    
+    unsigned int   ID;
     short       color;
     Coord       logicCoord;
     PieceType   type;
