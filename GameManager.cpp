@@ -79,6 +79,7 @@ bool GameManager::gameLogic(void)
     }else{
         if(info->whatToDo == wantSelectPiece) {
             Piece * piece = oneMapTile->getPiece();
+            
             currentActor->selectOnePiece(piece);
             currentActor->switchStatu();
         }else if(info->whatToDo == wantEatOtherPiece) {
@@ -91,6 +92,7 @@ bool GameManager::gameLogic(void)
                 Piece * piece = oneMapTile->getPiece();
                 otherActor->reMovePiece(piece);
                 currentActor->switchStatu();
+                clearInfo();
             }else {
                 
             }
@@ -100,14 +102,13 @@ bool GameManager::gameLogic(void)
                 currentActor->changePieceLogicCoord(coord);
                 map->updateTiles(info->coords);
                 currentActor->switchStatu();
+                clearInfo();
             }else{
                 
             }
-            
         }
         
     }
-    
     
     if(afterInfo)
     {
@@ -125,7 +126,13 @@ bool GameManager::gameLogic(void)
     return true;
 }
 
-
+void GameManager::clearInfo()
+{
+    if(info){
+        info->whatToDo = invaildOper;
+        info->coords.clear();
+    }
+}
 
 
 

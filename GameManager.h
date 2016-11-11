@@ -10,6 +10,7 @@
 #define GameManager_h
 
 #include <vector>
+#include <queue>
 #include "Map.h"
 /*
  单局游戏管理者 (GameManager)
@@ -32,7 +33,7 @@ class InputControl;
 struct  Info
 {
     int whatToDo;
-    std::vector<Coord> coords;
+    std::vector <Coord> coords;
 };
 struct  AfterInfo
 {
@@ -57,6 +58,7 @@ private:
 
     bool creaeteAll(void);
     bool init(void);
+    void clearInfo(void);
 private:
 
     Judge *             judge;

@@ -69,6 +69,7 @@ void Actor::clickMapTile(MapTile *mapTile)
             if(piece->getColor() == this->color) //选择的自己的棋子
             {
                 share->info->whatToDo = wantSelectPiece;
+                share->info->coords.pop_back();
                 share->info->coords.push_back(coord);
             }else                                //选择别人的棋子，吃棋子
             {

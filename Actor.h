@@ -43,28 +43,16 @@ public:
     static Actor * createWith(int ID, short color);
     bool init(int ID, short color);
     ~Actor();
-    /**
-     *  @brief 点击棋盘地图单元
-     *
-     *  @param 地图片元
-     *
-     *  @return  
-     */
+
     void clickMapTile(MapTile* mapTile);
-    /**
-     *  @brief 移除棋子
-     *
-     *  @param piece 传入的棋子
-     *
-     *  @return 移除成功了吗
-     */
+    
     void selectOnePiece(Piece* piece);
     
     void reMovePiece(Piece* piece);
     
-    
     void changePieceLogicCoord(Coord LogicCoord);
-     void switchStatu( void );
+    
+    void switchStatu( void );
 private:
     static int actorID;
    
