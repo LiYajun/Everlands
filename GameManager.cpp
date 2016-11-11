@@ -81,12 +81,12 @@ bool GameManager::gameLogic(void)
             currentActor->selectOnePiece(piece);
             currentActor->switchStatu();
         }else if(info->whatToDo == wantEatOtherPiece) {
-            bool canEat = true; //canEat = judge->JudageCanMoveAndEat();
+            bool canEat = judge->judgeCanMoveAndEat(info->coords);
             if(canEat == true) {
                 currentActor->changePieceLogicCoord(coord);
                 map->updateTiles(info->coords);
                 short otherColor   = oneMapTile->getColor();
-                Actor * otherActor = nullptr; // otherActor = judge->getActor(otherColor);
+                Actor * otherActor = judge->getActor(otherColor);
                 Piece * piece = oneMapTile->getPiece();
                 otherActor->reMovePiece(piece);
                 currentActor->switchStatu();
@@ -95,7 +95,7 @@ bool GameManager::gameLogic(void)
                 
             }
         }else if(info->whatToDo == wantMove){
-            bool canMove = true;  //canMove = judge->JudgeCanMove();
+            bool canMove   = judge->judgeCanMove(info->coords);
             if(canMove == true) {
                 currentActor->changePieceLogicCoord(coord);
                 map->updateTiles(info->coords);

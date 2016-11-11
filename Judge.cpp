@@ -49,12 +49,12 @@ bool Judge::checkOneActorOut(Actor *actor)
     return false;
 }
 
-bool Judge::judageCanMove(vector<Coord> coords)
+bool Judge::judgeCanMove(vector<Coord> coords)
 {
     return true;
 }
 
-bool Judge::judageCanMoveAndEat(vector<Coord> coords)
+bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
 {
     return true;
 }
