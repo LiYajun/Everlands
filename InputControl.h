@@ -10,9 +10,9 @@
 #define InputControl_h
 
 #include <queue>
-#include "Coord.h"
-using namespace std;
 
+using namespace std;
+class Coord;
 struct TouchCoord
 {
     float x,y;

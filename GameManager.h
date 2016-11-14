@@ -9,10 +9,8 @@
 #ifndef GameManager_h
 #define GameManager_h
 
-#include <vector>
-#include <queue>
-#include "Map.h"
-#include "Judge.h"
+
+using namespace std;
 /*
  单局游戏管理者 (GameManager)
  行为：  创建(创建棋手，裁判，地图，展示类,控制器，记录类) 	create()
@@ -21,13 +19,13 @@
 	重置游戏角色                      resetAll()
 	游戏逻辑                         gameLogic()
  */
-using namespace std;
+
 
 class Judge;
 class Actor;
 class InputControl;
-
-
+class Map;
+class Coord;
 
 typedef enum
 {

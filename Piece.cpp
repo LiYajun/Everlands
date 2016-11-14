@@ -5,9 +5,9 @@
 //  Created by li yajun on 16/10/25.
 //
 //
-
-#include "Piece.h"
+#include "Coord.h"
 #include <iostream>
+#include "Piece.h"
 /*
  unsigned int   ID;
  short       color;

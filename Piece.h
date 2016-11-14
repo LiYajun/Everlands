@@ -17,7 +17,8 @@
 	攻击力                 (attactValue)
     步长                   (step)
  */
-#include "Coord.h"
+
+class Coord;
 
 typedef enum {
     Dog = 0,

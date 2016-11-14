@@ -9,11 +9,11 @@
 #ifndef Actor_h
 #define Actor_h
 
-
 #include <vector>
-#include "Map.h"
-#include "GameManager.h"
+
 using namespace std;
+
+
 /*
  棋手(Actor)
  属性：
@@ -29,6 +29,12 @@ using namespace std;
 	移除棋子                 reMovePiece(pieceRef piece)
  改变棋子的逻辑坐标	 changePieceLogicCoord(logicCoord)
  */
+
+class Map;
+class MapTile;
+class Piece;
+class Coord;
+
 
 typedef enum {
     no_choose_piece_statu = 0,

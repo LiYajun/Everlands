@@ -5,10 +5,12 @@
 //  Created by li yajun on 16/10/25.
 //
 //
-#include <iostream>
+#include "Map.h"
+#include "MapTile.h"
+#include "GameManager.h"
 #include <assert.h>
-#include "Actor.h"
 
+#include "Actor.h"
 
 static unsigned int actorID = 1;
 Actor * Actor::create(short color)

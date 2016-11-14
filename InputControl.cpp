@@ -6,9 +6,9 @@
 //
 //
 
-#include "InputControl.h"
-#include "Coord.h"
 
+#include "Coord.h"
+#include "InputControl.h"
 
 
 InputControl *  InputControl::create( )
