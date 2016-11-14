@@ -10,6 +10,28 @@
 #include "Coord.h"
 
 
+
+InputControl *  InputControl::create( )
+{
+    InputControl *pRet = new(std::nothrow) InputControl();
+    if (pRet && pRet->init( ))
+    {
+        return pRet;
+    }
+    else
+    {
+        delete pRet;
+        pRet = nullptr;
+        return nullptr;
+    }
+}
+bool InputControl::init()
+{
+    
+    return true;
+}
+    
+        
 bool InputControl::addOneCoord(Coord coord)
 {
     size_t size = this->coordsQue.size();

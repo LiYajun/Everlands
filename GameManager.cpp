@@ -43,7 +43,9 @@ bool GameManager::init(void)
 bool GameManager::creaeteAll(void)
 {
     do {
-        
+        //judge =   Judge::create();
+        //map   =   Map::create();
+        inputController =   InputControl::create();
     }while(0);
     return true;
 }

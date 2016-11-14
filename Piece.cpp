@@ -49,12 +49,18 @@ bool Piece::init(short aColor,
     color = aColor;
     logicCoord = alogicCoord;
     type = aType;
-    attackValue = attackValue;
+    attackValue = aAttackValue;
     step = aStep;
     ID = pieceID;
     pieceID++;
     return  true;
 }
+
+void Piece::setLogicCoord(Coord aCoord)
+{
+    logicCoord = aCoord;
+}
+
 short Piece::getColor(void)
 {
     return  this->color;

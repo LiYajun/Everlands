@@ -13,14 +13,7 @@
 #include <vector>
 #include "Map.h"
 #include "GameManager.h"
-
-
-typedef enum {
-    no_choose_piece_statu = 0,
-    selected_one_piece_statu,
-    moving_piece_statu,
-    
-}ActorStatu;
+using namespace std;
 /*
  棋手(Actor)
  属性：
@@ -37,10 +30,18 @@ typedef enum {
  改变棋子的逻辑坐标	 changePieceLogicCoord(logicCoord)
  */
 
+typedef enum {
+    no_choose_piece_statu = 0,
+    selected_one_piece_statu,
+    moving_piece_statu,
+    wait_for_statu,
+    
+}ActorStatu;
+
 class Actor
 {
 public:
-    static Actor * createWith(short color);
+    static Actor * create(short color);
     bool init(short color);
     
     ~Actor();
@@ -56,12 +57,13 @@ public:
     void changePieceLogicCoord(Coord LogicCoord);
     
     void switchStatu( void );
+    
 private:
     unsigned int   ID;                              //编号,每个对象有一个唯一的
     short       color;                              //阵营（颜色）
     ActorStatu  statu;                              //棋手状态
-    std::vector<Actor*> allPieces;                  //拥有的棋子集合
-    std::vector<Actor*> alivePieces;                //可活动的棋子集合
+    vector<Piece*> allPieces;                  //拥有的棋子集合
+    vector<Piece*> alivePieces;                //可活动的棋子集合
     unsigned    score;                              //当前得分
     Piece *     selectedPieceRef;                   //选中的棋子引用
     

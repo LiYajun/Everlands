@@ -5,13 +5,13 @@
 //  Created by li yajun on 16/10/25.
 //
 //
-
+#include <iostream>
 #include <assert.h>
 #include "Actor.h"
 
 
 static unsigned int actorID = 1;
-Actor * Actor::createWith( short color)
+Actor * Actor::create(short color)
 {
    
     Actor *pRet = new(std::nothrow) Actor();
@@ -30,6 +30,7 @@ bool Actor::init(short color)
 {
     this->ID    = actorID;
     this->color = color;
+    this->statu = no_choose_piece_statu;
     actorID++;
     return true;
 }
@@ -99,11 +100,21 @@ void Actor::selectOnePiece(Piece* piece)
 }
 void Actor::reMovePiece(Piece *piece)
 {
-    
-    //return true;
+    vector<Piece*>::iterator it = alivePieces.begin();
+    for(;it!=alivePieces.end(); it++){
+        if(piece == *it){
+            alivePieces.erase(it);
+            break;
+        }
+    }
+//    cout<<"error, can't find the piece in alivePieces";
+//    exit(0);
 }
 void Actor::changePieceLogicCoord(Coord LogicCoord)
 {
+    if(selectedPieceRef  != nullptr) {
+        selectedPieceRef->setLogicCoord( LogicCoord );
+    }
     //return true;
 }
 
@@ -113,7 +124,7 @@ void Actor::switchStatu( )
     if(oldStatu == no_choose_piece_statu) {
          statu = selected_one_piece_statu;
     }else if(oldStatu == selected_one_piece_statu){
-         statu = no_choose_piece_statu;
+         statu = wait_for_statu;
     }else  {
         
     }

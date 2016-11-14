@@ -33,6 +33,8 @@ struct TouchCoord
 class InputControl
 {
 public:
+    static InputControl * create(void);
+    bool  init(void);
     bool  addOneCoord(Coord coord);
     Coord getInputCoord(void);
     Coord convertTouchToCoord(TouchCoord touchCoord);

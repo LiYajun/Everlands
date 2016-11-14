@@ -12,6 +12,7 @@
 #include <vector>
 #include <queue>
 #include "Map.h"
+#include "Judge.h"
 /*
  单局游戏管理者 (GameManager)
  行为：  创建(创建棋手，裁判，地图，展示类,控制器，记录类) 	create()
@@ -20,20 +21,26 @@
 	重置游戏角色                      resetAll()
 	游戏逻辑                         gameLogic()
  */
+using namespace std;
+
 class Judge;
 class Actor;
 class InputControl;
 
 
-#define invaildOper         0
-#define wantSelectPiece     1
-#define wantEatOtherPiece   2
-#define wantMove            3
+
+typedef enum
+{
+    invaildOper       =  0,
+    wantSelectPiece   =  1,
+    wantEatOtherPiece =  2,
+    wantMove          =  3,
+}infoType;
 
 struct  Info
 {
-    int whatToDo;
-    std::vector <Coord> coords;
+    infoType whatToDo;
+    vector <Coord> coords;
 };
 struct  AfterInfo
 {
@@ -64,8 +71,9 @@ private:
 
     Judge *             judge;
     InputControl *      inputController;
-    std::vector<Actor*> allActors;
     Map *               map;
+    //std::vector<Actor*> allActors;
+  
     
 };
 #endif /* GameManager_hpp */

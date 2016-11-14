@@ -40,6 +40,9 @@ public:
               int aStep);
     
     short getColor(void);
+    
+    void setLogicCoord(Coord aCoord);
+    
 private:
     unsigned int   ID;
     short       color;
