@@ -42,6 +42,8 @@ public:
     
     short getColor(void);
     
+    PieceType getType(void);
+    
     void setLogicCoord(Coord aCoord);
     
 private:

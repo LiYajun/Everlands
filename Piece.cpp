@@ -65,4 +65,7 @@ short Piece::getColor(void)
 {
     return  this->color;
 }
-
+PieceType Piece::getType(void)
+{
+    return type;
+}

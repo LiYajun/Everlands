@@ -129,6 +129,10 @@ bool GameManager::gameLogic(void)
     
     return true;
 }
+Map * GameManager::getMap()
+{
+    return  map;
+}
 
 void GameManager::clearInfo()
 {

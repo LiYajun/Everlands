@@ -60,6 +60,7 @@ public:
     bool gameLogic(void);
     Info *               info;
     AfterInfo *          afterInfo;
+    Map * getMap();
 private:
 
     bool creaeteAll(void);

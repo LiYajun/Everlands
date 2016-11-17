@@ -64,12 +64,14 @@ public:
     
     void switchStatu( void );
     
+    friend class Judge;
+    
 private:
     unsigned int   ID;                              //编号,每个对象有一个唯一的
     short       color;                              //阵营（颜色）
     ActorStatu  statu;                              //棋手状态
-    vector<Piece*> allPieces;                  //拥有的棋子集合
-    vector<Piece*> alivePieces;                //可活动的棋子集合
+    vector<Piece*> allPieces;                       //拥有的棋子集合
+    vector<Piece*> alivePieces;                     //可活动的棋子集合
     unsigned    score;                              //当前得分
     Piece *     selectedPieceRef;                   //选中的棋子引用
     
