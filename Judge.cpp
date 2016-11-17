@@ -6,7 +6,13 @@
 
 Judge::~Judge()
 {
-    // ÇåÀí²Ù×÷
+    for (vector<Actor *>::iterator it = m_allActors.begin(); m_allActors.end() != it; it++)
+    {
+        delete *it;
+    }
+
+    m_aliveActors.clear();
+    m_allActors.clear();
 }
 
 Judge *Judge::create()
@@ -15,7 +21,7 @@ Judge *Judge::create()
 
     if (pRet && pRet->init())
     {
-        //
+        // nothing to do.
     }
     else
     {
@@ -38,7 +44,7 @@ Actor *Judge::getCurrentActor()
 {
     Actor *result = NULL;
 
-    if (0 <= m_curIndex && m_aliveActors.size() > m_curIndex)
+    if (m_curIndex >=0 && m_curIndex < m_aliveActors.size())
     {
         result = m_aliveActors[m_curIndex];
     }
@@ -67,44 +73,44 @@ void Judge::switchNextActor()
     m_curIndex = (m_curIndex + 1) % m_aliveActors.size();
 }
 
-bool Judge::checkOneActorOut(Actor *actor)
-{
-    for (vector<Actor *>::iterator it = m_aliveActors.begin(); m_aliveActors.end() != it; it++)
-    {
-        if (actor == *it)
-        {
-            // ´ıÉÌ¶¨
-            if ()
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-
-    assert(false, "error parameter.");
-}
+// bool Judge::checkOneActorOut(Actor *actor)
+// {
+//     for (vector<Actor *>::iterator it = m_aliveActors.begin(); m_aliveActors.end() != it; it++)
+//     {
+//         if (actor == *it)
+//         {
+//             // å¾…å•†å®š
+//             if ()
+//             {
+//                 return true;
+//             }
+//             else
+//             {
+//                 return false;
+//             }
+//         }
+//     }
+// 
+//     assert(false, "error parameter.");
+// }
 
 bool Judge::judgeCanMove(vector<Coord> coords)
 {
-    // ĞèÒªÁ½¸öÍ¬ĞĞÍ¬ÁĞµÄÂß¼­×ø±ê
+    // éœ€è¦ä¸¤ä¸ªåŒè¡ŒåŒåˆ—çš„é€»è¾‘åæ ‡
     if (2 != coords.size() || coords[0] == coords[1] || 
         (coords[0].x != coords[1].x && coords[0].y != coords[1].y))
     {
         return false;
     }
 
-    // ÆğµãÒªÓĞÆå×Ó
+    // èµ·ç‚¹è¦æœ‰æ£‹å­
     Piece *piece = GameManager::shareGameManager()->getMap()->getMapTile(coords[0])->getPiece();
     if (NULL == piece)
     {
         return false;
     }
 
-    // ´ı´¦Àí
+    // å¾…å¤„ç†
     switch (piece->getType())
     {
         // ...
@@ -117,21 +123,21 @@ bool Judge::judgeCanMove(vector<Coord> coords)
 bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
 {
     Piece *piece1 = GameManager::shareGameManager()->getMap()->getMapTile(coords[0])->getPiece();
-    Piece *piece2 = GameManager::shareGameManager()->getMap()->getMapTile(coords[0])->getPiece();
+    Piece *piece2 = GameManager::shareGameManager()->getMap()->getMapTile(coords[1])->getPiece();
 
-    // ²»´æÔÚ³Ô×Ó¹ØÏµ
+    // ä¸å­˜åœ¨åƒå­å…³ç³»
     if (!piece1 || !piece2 || piece1->getColor() == piece2->getColor())
     {
         return false;
     }
 
-    // ²»·ûºÏ×ßÆåÂ·Ïß
+    // ä¸ç¬¦åˆèµ°æ£‹è·¯çº¿
     if (!judgeCanMove(coords))
     {
         return false;
     }
 
-    // ²»·ûºÏ³Ô×Ó±È½Ï£¨Î´ÊµÏÖ£©
+    // ä¸ç¬¦åˆåƒå­æ¯”è¾ƒï¼ˆæœªå®ç°ï¼‰
     if (piece1 < piece2)
     {
         return false;
@@ -160,7 +166,7 @@ void Judge::calculateGameResult()
     
 }
 
-int Judge::calculateActorScore(Actor *actor)
-{
-    return 100;
-}
+// int Judge::calculateActorScore(Actor *actor)
+// {
+//     return 100;
+// }
