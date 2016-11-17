@@ -11,12 +11,21 @@ struct Coord
     Coord(int x, int y);
 
     Coord operator=(const Coord c);
+
     bool operator==(const Coord c) const;
     bool operator!=(const Coord c) const;
+
+    Coord operator+(const Coord c) const;
+    Coord operator-(const Coord c) const;
 
     // 判断坐标是否无效
     bool isInvalid() const;
 };
+
+// 距离
+float distance(const Coord c1, const Coord c2);
+
+
 
 // 无效坐标
 const Coord CoordInvalid = {-1000, -1000};

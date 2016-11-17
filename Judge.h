@@ -10,8 +10,10 @@ using std::vector;
 class Judge
 {
 public:
-    Judge();
     virtual ~Judge();
+
+    Judge *create();
+    bool init();
 
     Actor *getCurrentActor();                       // 取到当前选手
     Actor *getActor(int color);                     // 获取指定颜色玩家
