@@ -21,8 +21,15 @@
 class Coord;
 
 typedef enum {
-    Dog = 0,
-    
+    None,
+    Elephant,
+    Lion,
+    Tiger,
+    Leopard,
+    Wolf,
+    Dog,
+    Cat,
+    Mouse
 }PieceType;
 
 class Piece
