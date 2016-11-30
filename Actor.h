@@ -6,10 +6,14 @@
 //
 //
 
-#ifndef Actor_h
-#define Actor_h
+#pragma once
 
 #include <vector>
+#include "Coord.h"
+#include "Map.h"
+#include "MapTile.h"
+#include "GameManager.h"
+#include <assert.h>
 
 using namespace std;
 
@@ -30,10 +34,8 @@ using namespace std;
  改变棋子的逻辑坐标	 changePieceLogicCoord(logicCoord)
  */
 
-class Map;
-class MapTile;
-class Piece;
-class Coord;
+ 
+
 
 
 typedef enum {
@@ -77,4 +79,4 @@ private:
     
 };
 
-#endif /* Actor_hpp */
+ 

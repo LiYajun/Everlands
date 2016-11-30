@@ -5,14 +5,6 @@
 //  Created by andybain on 16/10/28.
 //
 //
-#include "Actor.h"
-#include "Judge.h"
-#include "Map.h"
-#include "InputControl.h"
-#include "Map.h"
-#include <vector>
-#include <queue>
-
 #include "GameManager.h"
 
 static GameManager* gameShare;

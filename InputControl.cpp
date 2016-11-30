@@ -5,13 +5,9 @@
 //  Created by andybain on 2016/11/1.
 //
 //
-
-
-#include "Coord.h"
 #include "InputControl.h"
 
-
-InputControl *  InputControl::create( )
+InputControl* InputControl::create( )
 {
     InputControl *pRet = new(std::nothrow) InputControl();
     if (pRet && pRet->init( ))
@@ -25,9 +21,9 @@ InputControl *  InputControl::create( )
         return nullptr;
     }
 }
+
 bool InputControl::init()
 {
-    
     return true;
 }
     
@@ -52,10 +48,10 @@ Coord InputControl::getInputCoord( )
  
     return CoordInvalid;
 }
-Coord InputControl::convertTouchToCoord(TouchCoord touchCoord)
+Coord convertTouchToCoord(cocos2d::Touch touchCoord)
 {
-    
-   Coord coord;
-   return coord;
+   
+   //Coord coord = Coord();
+   return CoordInvalid;
 }
 

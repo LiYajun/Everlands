@@ -6,9 +6,17 @@
 //
 //
 
-#ifndef GameManager_h
-#define GameManager_h
+#pragma once
 
+#include <vector>
+#include <queue>
+
+#include "Judge.h"
+#include "Map.h"
+#include "InputControl.h"
+#include "Map.h"
+#include "Coord.h"
+#include "Actor.h"
 
 using namespace std;
 /*
@@ -21,11 +29,8 @@ using namespace std;
  */
 
 
-class Judge;
-class Actor;
-class InputControl;
-class Map;
-class Coord;
+ 
+
 
 typedef enum
 {
@@ -68,11 +73,12 @@ private:
     void clearInfo(void);
 private:
 
-    Judge *             judge;
+ 
     InputControl *      inputController;
+    Judge *             judge;
     Map *               map;
     //std::vector<Actor*> allActors;
   
     
 };
-#endif /* GameManager_hpp */
+ 

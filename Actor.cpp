@@ -5,10 +5,7 @@
 //  Created by li yajun on 16/10/25.
 //
 //
-#include "Map.h"
-#include "MapTile.h"
-#include "GameManager.h"
-#include <assert.h>
+
 
 #include "Actor.h"
 
