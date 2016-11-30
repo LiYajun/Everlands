@@ -78,5 +78,5 @@ MapTile *Map::getMapTile(Coord coord)
 
 void Map::updateTiles(vector<Coord> coords)
 {
-    // empty
+    // ...
 }

@@ -22,10 +22,6 @@ struct Coord
     bool isInvalid() const;
 };
 
-// 距离
-float distance(const Coord c1, const Coord c2);
-
-
 
 // 无效坐标
 const Coord CoordInvalid = {-1000, -1000};

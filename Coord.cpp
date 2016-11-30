@@ -55,17 +55,3 @@ bool Coord::isInvalid() const
 {
     return (CoordInvalid == *this);
 }
-
-float distance(const Coord c1, const Coord c2)
-{
-    Coord subC = c1 - c2;
-
-    if (0 == subC.x || 0 == subC.y)
-    {
-        return subC.x + subC.y;
-    }
-    else
-    {
-        return sqrt(powf(subC.x, 2) + powf(subC.y, 2));
-    }
-}
