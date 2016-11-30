@@ -78,5 +78,11 @@ MapTile *Map::getMapTile(Coord coord)
 
 void Map::updateTiles(vector<Coord> coords)
 {
-    // ...
+    Piece *piece1 = getMapTile(coords[0])->getPiece();
+    Piece *piece2 = getMapTile(coords[1])->getPiece();
+
+    //display();
+
+    getMapTile(coords[0])->setPiece(NULL);
+    getMapTile(coords[1])->setPiece(piece1);
 }

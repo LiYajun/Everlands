@@ -171,7 +171,7 @@ bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
         return false;
     }
 
-    // ...判断能否吃子
+    // 判断能否吃子
     if (TileType::Trap == map->getMapTile(coords[1])->getType() &&
         map->getMapTile(coords[1])->getColor() != map->getMapTile(coords[1])->getPiece()->getColor())
     {
@@ -193,32 +193,17 @@ bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
 
 bool Judge::checkOneGameOver()
 {
-    // 清除没有棋子的选手
-    vector<Actor *>::iterator itA = m_aliveActors.begin();
-    for (; m_aliveActors.end() != itA; itA++)
-    {
-        if (0 == (*itA)->alivePieces.size())
-        {
-            itA = m_aliveActors.erase(itA);
-        }
-    }
-
-    // 只剩一名选手，游戏结束
-    if (1 == m_aliveActors.size())
-    {
-        return true;
-    }
-
-    // 当前玩家被卡死
     static const int coordOffset[5] = {0, 1, 0, -1, 0};
     Map *map = GameManager::shareGameManager()->getMap();
 
+    // 判断当前选手是否被卡死
     int pieceCount = getCurrentActor()->alivePieces.size();
+    bool enableMove = false;
+
     for (int i = 0; i < pieceCount; i++)
     {
         Piece *piece = getCurrentActor()->alivePieces[i];
-        // ...
-        Coord coord = piece->getCoord();
+        Coord coord = piece->logicCoord;
 
         // 测试单步
         for (int j = 0; j < 4; j++)
@@ -231,13 +216,14 @@ bool Judge::checkOneGameOver()
                 coordVec[1] = testCoord;
                 if (judgeCanMove(coordVec))
                 {
-                    return false;
+                    enableMove = true;
+                    break;
                 }
             }
         }
 
         // 测试跃河
-        if (PieceType::Lion == piece->getType() || PieceType::Tiger == piece->getType())
+        if (!enableMove && PieceType::Lion == piece->getType() || PieceType::Tiger == piece->getType())
         {
             for (int j = 0; j < 4; j++)
             {
@@ -249,14 +235,44 @@ bool Judge::checkOneGameOver()
                     coordVec[1] = testCoord;
                     if (judgeCanMove(coordVec))
                     {
-                        return false;
+                        enableMove = true;
+                        break;
                     }
                 }
             }
         }
+
+        if (enableMove)
+        {
+            break;
+        }
     }
 
-    return true;
+    // 当前选手被卡死，移除所有棋子
+    if (!enableMove)
+    {
+        getCurrentActor()->alivePieces.clear();
+    }
+
+    // 清除没有棋子的选手
+    vector<Actor *>::iterator itA = m_aliveActors.begin();
+    for (; m_aliveActors.end() != itA; itA++)
+    {
+        if (0 == (*itA)->alivePieces.size())
+        {
+            itA = m_aliveActors.erase(itA);
+        }
+    }
+
+    // 如果只剩一名选手，游戏结束
+    if (1 == m_aliveActors.size())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void Judge::calculateGameResult()

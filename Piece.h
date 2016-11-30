@@ -60,5 +60,7 @@ private:
     PieceType   type;
     int         attackValue;
     int         step;
+
+    friend class Judge;
 };
 #endif /* Piece_h */

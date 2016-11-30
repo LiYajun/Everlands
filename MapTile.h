@@ -41,6 +41,8 @@ public:
         return m_piece;
     }
 
+    void setPiece(Piece *piece);
+
 private:
     int         m_color;
     TileType    m_type;
