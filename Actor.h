@@ -31,7 +31,7 @@ using namespace std;
 
  
 class Piece;
-class MapTile;
+class BoardTile;
 
 
 typedef enum {
@@ -52,7 +52,7 @@ public:
     
     short getColor(void);
     
-    void clickMapTile(MapTile* mapTile);
+    void clickMapTile(BoardTile* mapTile);
     
     void selectOnePiece(Piece* piece);
     

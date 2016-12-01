@@ -7,7 +7,7 @@
 //
 #pragma once
 
-
+#include "Coord.h"
 #include <cocos2d.h>
 using namespace cocos2d;
 using namespace std;
@@ -24,7 +24,7 @@ private:
     float deviceWidPixel;
     float deviceHeiPixel;
     float pieceWid;
-    float piecehei;
+    float pieceHei;
     float pieceOffsetX, pieceOffsetY;
     int   coordMaxX,  coordMaxY;
     queue<Coord> coordsQue;

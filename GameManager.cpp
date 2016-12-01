@@ -8,14 +8,11 @@
 #include <vector>
 #include <queue>
 
-#include "Map.h"
-#include "InputControl.h"
 #include "Coord.h"
 #include "Actor.h"
-
 #include "Judge.h"
-
-
+#include "Board.h"
+#include "InputControl.h"
 #include "GameManager.h"
 
 static GameManager* gameShare;
@@ -42,7 +39,9 @@ GameManager *GameManager::shareGameManager(void)
 
 bool GameManager::init(void)
 {
-    
+    do {
+        map = new Board::Board();
+    }while(0);
     return true;
 }
 //创建所有选手， 地图， 棋子， 裁判
@@ -72,7 +71,7 @@ bool GameManager::gameLogic(void)
     //判断逻辑坐标有效
     if(coord == CoordInvalid) return true;
     //获取地图片元
-    MapTile * oneMapTile = map->getMapTile(coord);
+    BoardTile * oneMapTile = map->getBoardTile(coord);
     //获取当前玩家
     Actor * currentActor = judge->getCurrentActor();
    
@@ -132,7 +131,7 @@ bool GameManager::gameLogic(void)
     
     return true;
 }
-Map * GameManager::getMap()
+Board * GameManager::getMap()
 {
     return  map;
 }

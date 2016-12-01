@@ -8,8 +8,8 @@
 
 #include <vector>
 #include "Coord.h"
-#include "Map.h"
-#include "MapTile.h"
+#include "Board.h"
+#include "BoardTile.h"
 #include "GameManager.h"
 #include <assert.h>
 
@@ -44,7 +44,7 @@ short Actor::getColor(void)
     return  color;
 }
 //走棋流程
-void Actor::clickMapTile(MapTile *mapTile)
+void Actor::clickMapTile(BoardTile *mapTile)
 {
     
     Piece* piece = mapTile->getPiece();

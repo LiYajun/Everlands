@@ -8,7 +8,7 @@
 
 #pragma once
 
-
+#include "Coord.h"
 
 using namespace std;
 /*
@@ -21,7 +21,7 @@ using namespace std;
  */
 
 
-class Map;
+class Board;
 class InputControl;
 class Judge;
 
@@ -58,7 +58,7 @@ public:
     bool gameLogic(void);
     Info *               info;
     AfterInfo *          afterInfo;
-    Map * getMap();
+    Board * getMap();
 private:
 
     bool creaeteAll(void);
@@ -69,7 +69,7 @@ private:
  
     InputControl *      inputController;
     Judge *             judge;
-    Map *               map;
+    Board *               map;
     //std::vector<Actor*> allActors;
   
     

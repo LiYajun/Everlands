@@ -2,11 +2,11 @@
 
 #include <vector>
 #include "Coord.h"
-#include "Actor.h"
+
 
 using std::vector;
 
-
+class Actor;
 class Judge
 {
 public:

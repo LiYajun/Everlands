@@ -1,10 +1,10 @@
-#include "Judge.h"
+
 #include "GameManager.h"
 #include "Board.h"
 #include "Piece.h"
 #include <assert.h>
-
-
+#include "Actor.h"
+#include "Judge.h"
 Judge::~Judge()
 {
     for (vector<Actor *>::iterator it = m_allActors.begin(); m_allActors.end() != it; it++)

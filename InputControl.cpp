@@ -34,7 +34,7 @@ bool InputControl::init()
         deviceHeiPixel = 768*2.0;
         pieceOffsetX   = 200.0;
         pieceOffsetY   = 300.0;
-        pieceWid = piecehei = 100.0;
+        pieceWid = pieceHei = 100.0;
         coordMaxX      = 7;
         coordMaxY      = 9;
         
@@ -67,7 +67,7 @@ Vec2 InputControl::convertCoordToVec2(const Coord& coord)
 {
     Vec2 pos =  Vec2(0.0, 0.0);
     pos.x = coord.x * pieceWid + pieceOffsetX;
-    pos.y = coord.y * pieceHei + pieceOffsetY
+    pos.y = coord.y * pieceHei + pieceOffsetY;
      
     return pos;
 }
