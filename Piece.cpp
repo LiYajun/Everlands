@@ -6,7 +6,7 @@
 //
 //
 #include <iostream>
-
+#include <cocos2d.h>
 #include "Piece.h"
 /*
  unsigned int   ID;
@@ -59,6 +59,7 @@ bool Piece::init(short aColor,
 void Piece::setLogicCoord(Coord aCoord)
 {
     logicCoord = aCoord;
+   // showSp->setPosition(const cocos2d::Vec2 &pos)
 }
 
 short Piece::getColor(void)

@@ -9,7 +9,7 @@
 #pragma once
 
 #include "Coord.h"
-
+#include <cocos2d.h>
 
 /*
  棋子    (Piece)
@@ -20,6 +20,8 @@
     步长                   (step)
  */
 
+
+using namespace cocos2d;
 
 
 typedef enum {
@@ -33,6 +35,8 @@ typedef enum {
     Cat,
     Mouse
 }PieceType;
+
+
 
 class Piece
 {
@@ -62,7 +66,7 @@ private:
     PieceType   type;
     int         attackValue;
     int         step;
-
+    Sprite *    showSp;
     friend class Judge;
 };
  

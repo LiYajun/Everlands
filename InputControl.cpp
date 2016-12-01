@@ -29,6 +29,16 @@ InputControl* InputControl::create( )
 
 bool InputControl::init()
 {
+    do{
+        deviceWidPixel = 1024*2.0;
+        deviceHeiPixel = 768*2.0;
+        pieceOffsetX   = 200.0;
+        pieceOffsetY   = 300.0;
+        pieceWid = piecehei = 100.0;
+        coordMaxX      = 7;
+        coordMaxY      = 9;
+        
+    }while(0);
     return true;
 }
     
@@ -53,10 +63,24 @@ Coord InputControl::getInputCoord( )
  
     return CoordInvalid;
 }
-Coord convertTouchToCoord( Touch touchCoord)
+Vec2 InputControl::convertCoordToVec2(const Coord& coord)
 {
-   
-   //Coord coord = Coord();
+    Vec2 pos =  Vec2(0.0, 0.0);
+    pos.x = coord.x * pieceWid + pieceOffsetX;
+    pos.y = coord.y * pieceHei + pieceOffsetY
+     
+    return pos;
+}
+Coord InputControl::convertTouchToCoord(Touch * touchCoord)
+{
+    Vec2 pos = touchCoord->getLocation();
+    int coordX = (pos.x - pieceOffsetX)/pieceWid;
+    int coordY = (pos.y - pieceOffsetY)/pieceHei;
+    if(coordX>=0 && coordY>=0 && coordX < coordMaxX && coordY < coordMaxY){
+        Coord coord = Coord(coordX, coordY);
+        return coord;
+    }
    return CoordInvalid;
 }
+
 
