@@ -6,6 +6,12 @@
 //
 //
 
+#include <vector>
+#include "Coord.h"
+#include "Map.h"
+#include "MapTile.h"
+#include "GameManager.h"
+#include <assert.h>
 
 #include "Actor.h"
 

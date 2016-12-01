@@ -5,7 +5,8 @@
 //  Created by li yajun on 16/10/25.
 //
 //
- 
+#include <iostream>
+
 #include "Piece.h"
 /*
  unsigned int   ID;

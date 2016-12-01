@@ -8,15 +8,7 @@
 
 #pragma once
 
-#include <vector>
-#include <queue>
 
-#include "Judge.h"
-#include "Map.h"
-#include "InputControl.h"
-#include "Map.h"
-#include "Coord.h"
-#include "Actor.h"
 
 using namespace std;
 /*
@@ -29,8 +21,9 @@ using namespace std;
  */
 
 
- 
-
+class Map;
+class InputControl;
+class Judge;
 
 typedef enum
 {

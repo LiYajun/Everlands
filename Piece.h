@@ -9,8 +9,8 @@
 #pragma once
 
 #include "Coord.h"
-#include <iostream>
-#include "Piece.h"
+
+
 /*
  棋子    (Piece)
  属性：  阵营(颜色,区分所属玩家)(color)

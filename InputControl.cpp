@@ -5,6 +5,11 @@
 //  Created by andybain on 2016/11/1.
 //
 //
+
+#include "Coord.h"
+#include <queue>
+#include <iostream>
+
 #include "InputControl.h"
 
 InputControl* InputControl::create( )
@@ -48,7 +53,7 @@ Coord InputControl::getInputCoord( )
  
     return CoordInvalid;
 }
-Coord convertTouchToCoord(cocos2d::Touch touchCoord)
+Coord convertTouchToCoord( Touch touchCoord)
 {
    
    //Coord coord = Coord();

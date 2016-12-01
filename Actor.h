@@ -8,12 +8,7 @@
 
 #pragma once
 
-#include <vector>
-#include "Coord.h"
-#include "Map.h"
-#include "MapTile.h"
-#include "GameManager.h"
-#include <assert.h>
+
 
 using namespace std;
 
@@ -35,7 +30,8 @@ using namespace std;
  */
 
  
-
+class Piece;
+class MapTile;
 
 
 typedef enum {
