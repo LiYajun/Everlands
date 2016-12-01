@@ -1,7 +1,7 @@
-#include "Map.h"
+#include "Board.h"
 
 
-Map::Map(char *fileName /* = NULL */)
+Board::Board(char *fileName /* = NULL */)
 {
     if (NULL == fileName)
     {
@@ -46,14 +46,14 @@ Map::Map(char *fileName /* = NULL */)
                 // 逻辑坐标
                 Coord coord = {i, j};
 
-                MapTile *tile = new MapTile(color, type, coord, NULL);
+                BoardTile *tile = new BoardTile(color, type, coord, NULL);
                 m_tiles.push_back(tile);
             }
         }
     }
 }
 
-Map::~Map()
+Board::~Board()
 {
     for (int i = 0; i < m_tiles.size(); i++)
     {
@@ -63,9 +63,9 @@ Map::~Map()
     m_tiles.clear();
 }
 
-MapTile *Map::getMapTile(Coord coord)
+BoardTile *Board::getBoardTile(Coord coord)
 {
-    MapTile *result = NULL;
+    BoardTile *result = NULL;
 
     if ((coord.x >= 0 && coord.y < m_maxWidth) &&
         (coord.y >= 0 && coord.y < m_maxHeight))
@@ -76,13 +76,13 @@ MapTile *Map::getMapTile(Coord coord)
     return result;
 }
 
-void Map::updateTiles(vector<Coord> coords)
+void Board::updateTiles(vector<Coord> coords)
 {
-    Piece *piece1 = getMapTile(coords[0])->getPiece();
-    Piece *piece2 = getMapTile(coords[1])->getPiece();
+    Piece *piece1 = getBoardTile(coords[0])->getPiece();
+    Piece *piece2 = getBoardTile(coords[1])->getPiece();
 
     //display();
 
-    getMapTile(coords[0])->setPiece(NULL);
-    getMapTile(coords[1])->setPiece(piece1);
+    getBoardTile(coords[0])->setPiece(NULL);
+    getBoardTile(coords[1])->setPiece(piece1);
 }

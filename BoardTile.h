@@ -15,11 +15,11 @@ typedef enum
 } TileType;
 
 
-class MapTile
+class BoardTile
 {
 public:
-    MapTile();
-    MapTile(int color, TileType type, Coord coord, Piece *piece);
+    BoardTile();
+    BoardTile(int color, TileType type, Coord coord, Piece *piece);
 
     inline int getColor()
     {

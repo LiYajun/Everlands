@@ -1,6 +1,6 @@
 #include "Judge.h"
 #include "GameManager.h"
-#include "Map.h"
+#include "Board.h"
 #include "Piece.h"
 #include <assert.h>
 
@@ -76,7 +76,7 @@ void Judge::switchNextActor()
 
 bool Judge::judgeCanMove(vector<Coord> coords)
 {
-    Map *map = GameManager::shareGameManager()->getMap();
+    Board *board = GameManager::shareGameManager()->getMap();
 
     // 需要两个同行同列的逻辑坐标
     if (2 != coords.size() || coords[0] == coords[1] || 
@@ -86,7 +86,7 @@ bool Judge::judgeCanMove(vector<Coord> coords)
     }
 
     // 起点要有棋子
-    Piece *piece = map->getMapTile(coords[0])->getPiece();
+    Piece *piece = board->getBoardTile(coords[0])->getPiece();
     if (NULL == piece)
     {
         return false;
@@ -101,7 +101,7 @@ bool Judge::judgeCanMove(vector<Coord> coords)
             // 老鼠单步，总允许
             return true;
         }
-        else if (TileType::River != map->getMapTile(coords[1])->getType())
+        else if (TileType::River != board->getBoardTile(coords[1])->getType())
         {
             // 其他动物岸上单步，总允许
             return true;
@@ -119,7 +119,7 @@ bool Judge::judgeCanMove(vector<Coord> coords)
             {
                 for (int i = 3; i < 6; i++)
                 {
-                    if (NULL != map->getMapTile(Coord(coords[0].x, i))->getPiece())
+                    if (NULL != board->getBoardTile(Coord(coords[0].x, i))->getPiece())
                     {
                         return false;
                     }
@@ -138,7 +138,7 @@ bool Judge::judgeCanMove(vector<Coord> coords)
                 int leftX = (coords[0].x < coords[1].x) ? coords[0].x : coords[1].x;
                 for (int i = leftX + 1; i < leftX + 3; i++)
                 {
-                    if (NULL != map->getMapTile(Coord(i, coords[0].y))->getPiece())
+                    if (NULL != board->getBoardTile(Coord(i, coords[0].y))->getPiece())
                     {
                         return false;
                     }
@@ -154,10 +154,10 @@ bool Judge::judgeCanMove(vector<Coord> coords)
 
 bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
 {
-    Map *map = GameManager::shareGameManager()->getMap();
+    Board *board = GameManager::shareGameManager()->getMap();
 
-    Piece *piece1 = map->getMapTile(coords[0])->getPiece();
-    Piece *piece2 = map->getMapTile(coords[1])->getPiece();
+    Piece *piece1 = board->getBoardTile(coords[0])->getPiece();
+    Piece *piece2 = board->getBoardTile(coords[1])->getPiece();
 
     // 不存在吃子关系
     if (!piece1 || !piece2 || piece1->getColor() == piece2->getColor())
@@ -172,8 +172,8 @@ bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
     }
 
     // 判断能否吃子
-    if (TileType::Trap == map->getMapTile(coords[1])->getType() &&
-        map->getMapTile(coords[1])->getColor() != map->getMapTile(coords[1])->getPiece()->getColor())
+    if (TileType::Trap == board->getBoardTile(coords[1])->getType() &&
+        board->getBoardTile(coords[1])->getColor() != board->getBoardTile(coords[1])->getPiece()->getColor())
     {
         return true;
     }
@@ -194,7 +194,7 @@ bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
 bool Judge::checkOneGameOver()
 {
     static const int coordOffset[5] = {0, 1, 0, -1, 0};
-    Map *map = GameManager::shareGameManager()->getMap();
+    Board *board = GameManager::shareGameManager()->getMap();
 
     // 判断当前选手是否被卡死
     int pieceCount = getCurrentActor()->alivePieces.size();
@@ -209,7 +209,7 @@ bool Judge::checkOneGameOver()
         for (int j = 0; j < 4; j++)
         {
             Coord testCoord = Coord(coord.x + coordOffset[j], coord.y + coordOffset[j + 1]);
-            if (map->getMapTile(testCoord))
+            if (board->getBoardTile(testCoord))
             {
                 vector<Coord> coordVec;
                 coordVec[0] = coord;
@@ -228,7 +228,7 @@ bool Judge::checkOneGameOver()
             for (int j = 0; j < 4; j++)
             {
                 Coord testCoord = Coord(coord.x + coordOffset[j] * 3, coord.y + coordOffset[j + 1] * 4);
-                if (map->getMapTile(testCoord))
+                if (board->getBoardTile(testCoord))
                 {
                     vector<Coord> coordVec;
                     coordVec[0] = coord;
