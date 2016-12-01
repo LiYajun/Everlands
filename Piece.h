@@ -59,6 +59,7 @@ public:
     
     void setLogicCoord(Coord aCoord);
     
+    void  initSprite(PieceType type);
 private:
     unsigned int   ID;
     short       color;

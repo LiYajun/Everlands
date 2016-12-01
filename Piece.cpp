@@ -55,7 +55,39 @@ bool Piece::init(short aColor,
     pieceID++;
     return  true;
 }
-
+/*
+ Elephant,
+ Lion,
+ Tiger,
+ Leopard,
+ Wolf,
+ Dog,
+ Cat,
+ Mouse
+ */
+void Piece::initSprite(PieceType type)
+{
+    std::string str ="";
+    if(type == Elephant)
+        str = "elephant.png";
+    else if(type == Lion)
+        str = "lion.png";
+    else if(type == Tiger)
+        str = "tiger.png";
+    else if(type == Leopard)
+        str = "leopard.png";
+    else if(type == Wolf)
+        str = "wolf.png";
+    else if(type == Dog)
+        str = "dog.png";
+    else if(type == Cat)
+        str = "cat.png";
+    else if(type == Mouse)
+        str = "mouse.png";
+    else
+        str ="";
+    showSp = Sprite::create(str);
+}
 void Piece::setLogicCoord(Coord aCoord)
 {
     logicCoord = aCoord;
