@@ -11,7 +11,7 @@ class Board
 public:
     Board(char *fileName = NULL);
     virtual ~Board();
-
+    
     BoardTile *getBoardTile(Coord coord);           // 根据逻辑坐标返回地图片元
     void updateTiles(vector<Coord> coords);     // 更新地图片元
 

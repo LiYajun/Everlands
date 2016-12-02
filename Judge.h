@@ -12,7 +12,7 @@ class Judge
 public:
     virtual ~Judge();
 
-    Judge *create();
+    static Judge *create();
     bool init();
 
     Actor *getCurrentActor();                       // 取到当前选手

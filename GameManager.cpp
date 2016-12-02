@@ -7,6 +7,7 @@
 //
 #include <vector>
 #include <queue>
+#include <stdlib.h>
 
 #include "Coord.h"
 #include "Actor.h"
@@ -40,7 +41,7 @@ GameManager *GameManager::shareGameManager(void)
 bool GameManager::init(void)
 {
     do {
-        map = new Board::Board();
+        creaeteAll();
     }while(0);
     return true;
 }
@@ -48,10 +49,14 @@ bool GameManager::init(void)
 bool GameManager::creaeteAll(void)
 {
     do {
-        //judge =   Judge::create();
-        //map   =   Map::create();
+        judge =   Judge::create();
+        string str = "123";
+//        char * buff = (char*)malloc(str.size());
+//        strncpy(buff, str.c_str(), str.size());
+        map   =   new Board((char*)str.c_str());
         inputController =   InputControl::create();
     }while(0);
+    
     return true;
 }
 void GameManager::destoryAll(void)

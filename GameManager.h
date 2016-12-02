@@ -56,8 +56,8 @@ public:
     void destoryAll(void);
     void resetALl(void);
     bool gameLogic(void);
-    Info *               info;
-    AfterInfo *          afterInfo;
+    Info *      info;
+    AfterInfo * afterInfo;
     Board * getMap();
 private:
 
@@ -70,7 +70,7 @@ private:
     InputControl *      inputController;
     Judge *             judge;
     Board *               map;
-    //std::vector<Actor*> allActors;
+     
   
     
 };
