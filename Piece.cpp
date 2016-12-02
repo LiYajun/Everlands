@@ -7,6 +7,9 @@
 //
 #include <iostream>
 #include <cocos2d.h>
+#include "InputControl.h"
+#include "GameManager.h"
+
 #include "Piece.h"
 /*
  unsigned int   ID;
@@ -53,6 +56,7 @@ bool Piece::init(short aColor,
     step = aStep;
     ID = pieceID;
     pieceID++;
+    initSprite(aType);
     return  true;
 }
 /*
@@ -91,7 +95,9 @@ void Piece::initSprite(PieceType type)
 void Piece::setLogicCoord(Coord aCoord)
 {
     logicCoord = aCoord;
-   // showSp->setPosition(const cocos2d::Vec2 &pos)
+    InputControl * controller = GameManager::shareGameManager()->getInputControl();
+    Vec2 pos = controller->convertCoordToVec2(logicCoord);
+    showSp->setPosition(pos);
 }
 
 short Piece::getColor(void)

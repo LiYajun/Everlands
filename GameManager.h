@@ -59,6 +59,7 @@ public:
     Info *      info;
     AfterInfo * afterInfo;
     Board * getMap();
+    InputControl * getInputControl();
 private:
 
     bool creaeteAll(void);
