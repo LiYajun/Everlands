@@ -136,6 +136,10 @@ Board * GameManager::getMap()
     return  map;
 }
 
+InputControl * GameManager::getInputControl()
+{
+    return  inputController;
+}
 void GameManager::clearInfo()
 {
     if(info){
