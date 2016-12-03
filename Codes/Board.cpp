@@ -5,6 +5,8 @@ Board::Board(char *fileName /* = NULL */)
 {
     if (NULL == fileName)
     {
+        m_bg = Sprite::create("Images/board.png");
+
         // 竖屏
         m_maxWidth  = 7;
         m_maxHeight = 9;
@@ -154,4 +156,9 @@ void Board::updateTiles(vector<Coord> coords)
 
     getBoardTile(coords[0])->setPiece(NULL);
     getBoardTile(coords[1])->setPiece(piece1);
+}
+
+Sprite *Board::getBG()
+{
+    return m_bg;
 }
