@@ -12,6 +12,9 @@ public:
     Board(char *fileName = NULL);
     virtual ~Board();
     
+    static Board *create(char *fileName = NULL);
+    virtual bool init(char *fileName = NULL);
+
     BoardTile *getBoardTile(Coord coord);       // 根据逻辑坐标返回地图片元
     void updateTiles(vector<Coord> coords);     // 更新地图片元
 
