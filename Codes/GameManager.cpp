@@ -71,7 +71,8 @@ bool GameManager::gameLogic(void)
     //获取逻辑坐标
     Coord coord = inputController->getInputCoord();
     //判断逻辑坐标有效
-    if(coord == CoordInvalid) return true;
+    if(coord == CoordInvalid)
+        return true;
     //获取地图片元
     BoardTile * oneMapTile = map->getBoardTile(coord);
     //获取当前玩家
