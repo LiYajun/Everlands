@@ -74,7 +74,11 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    auto sp = Sprite::create("cat_1.png");
     
+    sp->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    
+    addChild(sp);
     
     
     gameManager = GameManager::shareGameManager();

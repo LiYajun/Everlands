@@ -130,8 +130,6 @@ bool GameManager::gameLogic(void)
         
         judge->switchNextActor();
     }
-    
-    
     return true;
 }
 Board * GameManager::getMap()
