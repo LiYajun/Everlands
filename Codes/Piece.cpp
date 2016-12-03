@@ -56,7 +56,7 @@ bool Piece::init(short aColor,
     step = aStep;
     ID = pieceID;
     pieceID++;
-    initSprite(aType);
+    initSprite(aType, aColor);
     return  true;
 }
 /*
@@ -69,27 +69,31 @@ bool Piece::init(short aColor,
  Cat,
  Mouse
  */
-void Piece::initSprite(PieceType type)
+void Piece::initSprite(PieceType type, short aColor)
 {
     std::string str ="";
     if(type == Elephant)
-        str = "elephant.png";
+        str = "elephant_.png";
     else if(type == Lion)
-        str = "lion.png";
+        str = "lion_.png";
     else if(type == Tiger)
-        str = "tiger.png";
+        str = "tiger_.png";
     else if(type == Leopard)
-        str = "leopard.png";
+        str = "leopard_.png";
     else if(type == Wolf)
-        str = "wolf.png";
+        str = "wolf_.png";
     else if(type == Dog)
-        str = "dog.png";
+        str = "dog_.png";
     else if(type == Cat)
-        str = "cat.png";
+        str = "cat_.png";
     else if(type == Mouse)
-        str = "mouse.png";
+        str = "mouse_.png";
     else
         str ="";
+    if(aColor == 0)
+        str.append("1");
+    else
+        str.append("2");
     showSp = Sprite::create(str);
 }
 void Piece::setLogicCoord(Coord aCoord)

@@ -50,10 +50,7 @@ bool GameManager::creaeteAll(void)
 {
     do {
         judge =   Judge::create();
-        string str = "123";
-//        char * buff = (char*)malloc(str.size());
-//        strncpy(buff, str.c_str(), str.size());
-        map   =   new Board((char*)str.c_str());
+        map   =   Board::create(NULL);
         inputController =   InputControl::create();
     }while(0);
     
