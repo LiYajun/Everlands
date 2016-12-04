@@ -15,7 +15,7 @@ Board::~Board()
     m_tiles.clear();
 }
 
-Board *Board::create(Sprite *parent, char *fileName /* = NULL */)
+Board *Board::create(Node *parent, std::string fileName /* = NULL */)
 {
     Board *pRet = new(std::nothrow) Board();
     if (pRet && pRet->init(parent, fileName))
@@ -30,11 +30,11 @@ Board *Board::create(Sprite *parent, char *fileName /* = NULL */)
     }
 }
 
-bool Board::init(Sprite *parent, char *fileName /* = NULL */)
+bool Board::init(Node *parent, std::string  fileName /* = NULL */)
 {
-    if (NULL == fileName)
+    if ( fileName.empty())
     {
-        fileName = "Images/board.png";
+        fileName =  "Images/board.png";
     }
     m_bg = Sprite::create(fileName);
     parent->addChild(m_bg);
@@ -110,9 +110,4 @@ void Board::updateTiles(vector<Coord> coords)
 
     getBoardTile(coords[0])->setPiece(NULL);
     getBoardTile(coords[1])->setPiece(piece1);
-}
-
-Sprite *Board::getBG()
-{
-    return m_bg;
 }

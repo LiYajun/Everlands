@@ -38,7 +38,7 @@ bool Actor::init(short color)
     this->statu = no_choose_piece_statu;
     actorID++;
     
-    if(color == 0){
+    if(color == 0) {
         Coord pos[8] ={
             {0,0},
             {0,2},

@@ -81,7 +81,7 @@ bool HelloWorld::init()
     addChild(sp);
     
     gameManager = GameManager::shareGameManager();
-
+    
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     //创建单点触摸监听器 EventListenerTouchOneByOne
     auto touchListener = EventListenerTouchOneByOne::create();

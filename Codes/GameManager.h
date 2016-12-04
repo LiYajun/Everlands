@@ -13,6 +13,7 @@
 
 using namespace std;
 using std::vector;
+USING_NS_CC;
 /*
  单局游戏管理者 (GameManager)
  行为：  创建(创建棋手，裁判，地图，展示类,控制器，记录类) 	create()
@@ -50,12 +51,10 @@ struct  AfterInfo
     int isGameOver;
 };
 
-
- 
 class GameManager
 {
 public:
-    static GameManager * shareGameManager(void);
+    static GameManager * shareGameManager(Node* node = nullptr);
     void destoryAll(void);
     void resetAll(void);
     bool gameLogic(void);
@@ -63,10 +62,11 @@ public:
     AfterInfo *     afterInfo;
     Board *         getMap();
     InputControl *  getInputControl();
+    
 private:
 
-    bool creaeteAll(void);
-    bool init(void);
+    bool creaeteAll(Node* node = nullptr);
+    bool init(Node* node = nullptr);
     void clearInfo(void);
 private:
 
@@ -74,7 +74,7 @@ private:
     InputControl *      inputController;
     Judge *             judge;
     Board *               map;
-     
+    Node  *             layerNode;
   
     
 };

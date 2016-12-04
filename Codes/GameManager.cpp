@@ -17,7 +17,7 @@
 #include "GameManager.h"
 
 static GameManager* gameShare;
-GameManager *GameManager::shareGameManager(void)
+GameManager *GameManager::shareGameManager(Node* node)
 {
     if(gameShare == nullptr)
     {
@@ -38,7 +38,7 @@ GameManager *GameManager::shareGameManager(void)
     
 }
 
-bool GameManager::init(void)
+bool GameManager::init(Node* node )
 {
     do {
         creaeteAll();
@@ -46,11 +46,11 @@ bool GameManager::init(void)
     return true;
 }
 //创建所有选手， 地图， 棋子， 裁判
-bool GameManager::creaeteAll(void)
+bool GameManager::creaeteAll(Node* node )
 {
     do {
         judge           =   Judge::create();
-        map             =   Board::create(NULL);
+        map             =   Board::create(node,NULL);
         inputController =   InputControl::create();
         
     }while(0);

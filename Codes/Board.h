@@ -14,8 +14,8 @@ public:
     Board();
     virtual ~Board();
     
-    static Board *create(Sprite *parent, char *fileName = NULL);
-    virtual bool init(Sprite *parent, char *fileName = NULL);
+    static Board *create(Node *parent,  std::string fileName = NULL);
+    virtual bool init(Node *parent, std::string fileName = NULL);
 
     BoardTile *getBoardTile(Coord coord);       // 根据逻辑坐标返回地图片元
     void updateTiles(vector<Coord> coords);     // 更新地图片元
