@@ -1,4 +1,6 @@
 #include "Board.h"
+#include "GameManager.h"
+#include "InputControl.h"
 
 
 Board::Board()
@@ -91,9 +93,13 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
     return true;
 }
 
-void Board::addPieceImg(Node *node)
+void Board::addPiece(Piece *piece)
 {
+    getBoardTile(piece->logicCoord)->setPiece(piece);
 
+    Vec2 p =  GameManager::shareGameManager()->getInputControl()->convertCoordToVec2(piece->logicCoord);
+    piece->showSp->setPosition(p);
+    m_bg->addChild(piece->showSp);
 }
 
 BoardTile *Board::getBoardTile(Coord coord)

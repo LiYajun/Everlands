@@ -73,6 +73,8 @@ private:
     int         attackValue;
     int         step;
     Sprite *    showSp;
+
     friend class Judge;
+    friend class Board;
 };
  
