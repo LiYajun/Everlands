@@ -32,7 +32,7 @@ bool InputControl::init()
     do{
         deviceWidPixel = 1024*2.0;
         deviceHeiPixel = 768*2.0;
-        pieceOffsetX   = 100.0;
+        pieceOffsetX   = 50.0;
         pieceOffsetY   = 100.0;
         pieceWid = pieceHei = 90.0;
         coordMaxX      = 7;

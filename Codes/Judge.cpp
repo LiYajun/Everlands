@@ -219,8 +219,10 @@ bool Judge::checkOneGameOver()
             if (board->getBoardTile(testCoord))
             {
                 vector<Coord> coordVec;
-                coordVec[0] = coord;
-                coordVec[1] = testCoord;
+                coordVec.push_back(coord);
+                coordVec.push_back(testCoord);
+//                coordVec[0] = coord;
+//                coordVec[1] = testCoord;
                 if (judgeCanMove(coordVec))
                 {
                     enableMove = true;
@@ -238,8 +240,10 @@ bool Judge::checkOneGameOver()
                 if (board->getBoardTile(testCoord))
                 {
                     vector<Coord> coordVec;
-                    coordVec[0] = coord;
-                    coordVec[1] = testCoord;
+                    coordVec.push_back(coord);
+                    coordVec.push_back(testCoord);
+//                    coordVec[0] = coord;
+//                    coordVec[1] = testCoord;
                     if (judgeCanMove(coordVec))
                     {
                         enableMove = true;
