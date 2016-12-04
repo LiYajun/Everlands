@@ -62,7 +62,7 @@ public:
     Board *         getMap();
     InputControl *  getInputControl();
     bool gameLogic(void);
-    Info *      info;
+    Info *          info;
     AfterInfo *     afterInfo;
 private:
     bool init( );

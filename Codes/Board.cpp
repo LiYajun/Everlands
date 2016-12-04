@@ -43,7 +43,6 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     m_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
-
     // 竖屏
     m_maxWidth  = 7;
     m_maxHeight = 9;
@@ -106,7 +105,7 @@ BoardTile *Board::getBoardTile(Coord coord)
 {
     BoardTile *result = NULL;
 
-    if ((coord.x >= 0 && coord.y < m_maxWidth) &&
+    if ((coord.x >= 0 && coord.x < m_maxWidth) &&
         (coord.y >= 0 && coord.y < m_maxHeight))
     {
         result = m_tiles[coord.x + coord.y * m_maxWidth];

@@ -73,28 +73,32 @@ void Piece::initSprite(PieceType type, short aColor)
 {
     std::string str ="";
     if(type == Elephant)
-        str = "elephant_.png";
+        str = "elephant_";
     else if(type == Lion)
-        str = "lion_.png";
+        str = "lion_";
     else if(type == Tiger)
-        str = "tiger_.png";
+        str = "tiger_";
     else if(type == Leopard)
-        str = "leopard_.png";
+        str = "leopard_";
     else if(type == Wolf)
-        str = "wolf_.png";
+        str = "wolf_";
     else if(type == Dog)
-        str = "dog_.png";
+        str = "dog_";
     else if(type == Cat)
-        str = "cat_.png";
+        str = "cat_";
     else if(type == Mouse)
-        str = "mouse_.png";
+        str = "mouse_";
     else
         str ="";
-    if(aColor == 0)
-        str.append("1");
+    if(aColor == 1)
+        str.append("1.png");
     else
-        str.append("2");
+        str.append("2.png");
     showSp = Sprite::create(str);
+    showSp->setContentSize(Size(90, 90));
+    showSp->setScale(0.5);
+    Size s = showSp->getContentSize();
+    log("12345");
 }
 void Piece::setLogicCoord(Coord aCoord)
 {

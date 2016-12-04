@@ -41,8 +41,8 @@ GameManager *GameManager::shareGameManager( )
 bool GameManager::init( )
 {
     do {
-     
-       
+        info        = new Info();
+        afterInfo   = new AfterInfo();
     }while(0);
     return true;
 }
@@ -52,8 +52,8 @@ bool GameManager::creaeteAll(Node* node)
 {
     if(node != nullptr) {
         layerNode       =   node;
-        judge           =   Judge::create();
         map             =   Board::create(layerNode,"");
+        judge           =   Judge::create();
         inputController =   InputControl::create();
         
         return true;
@@ -82,7 +82,7 @@ bool GameManager::gameLogic(void)
     BoardTile * oneMapTile = map->getBoardTile(coord);
     //获取当前玩家
     Actor * currentActor = judge->getCurrentActor();
-   
+    
     //玩家点击处理
     currentActor->clickMapTile(oneMapTile);
     
@@ -139,11 +139,17 @@ bool GameManager::gameLogic(void)
 }
 Board * GameManager::getMap()
 {
+    if(map == nullptr){
+        map = Board::create(layerNode);
+    }
     return  map;
 }
 
 InputControl * GameManager::getInputControl()
 {
+    if(inputController == nullptr) {
+        inputController = InputControl::create();
+    }
     return  inputController;
 }
 void GameManager::clearInfo()

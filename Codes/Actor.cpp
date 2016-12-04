@@ -73,6 +73,9 @@ bool Actor::init(short color)
                                           ary[i].type,
                                           ary[i].attack,
                                           ary[i].aStep);
+            
+            Board * map = GameManager::shareGameManager()->getMap();
+            map->addPiece(piece);
             allPieces.push_back(piece);
             alivePieces.push_back(piece);
         }
