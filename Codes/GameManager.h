@@ -60,9 +60,9 @@ public:
     void resetAll(void);
     bool gameLogic(void);
     Info *      info;
-    AfterInfo * afterInfo;
-    Board * getMap();
-    InputControl * getInputControl();
+    AfterInfo *     afterInfo;
+    Board *         getMap();
+    InputControl *  getInputControl();
 private:
 
     bool creaeteAll(void);

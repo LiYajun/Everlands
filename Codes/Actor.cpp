@@ -37,6 +37,26 @@ bool Actor::init(short color)
     this->color = color;
     this->statu = no_choose_piece_statu;
     actorID++;
+    
+    if(color == 0){
+        Coord pos[8] ={
+            {0,0},
+            {0,2},
+            {1,1},
+            {2,2},
+            {4,2},
+            {5,1},
+            {6,0},
+            {6,2}
+        };
+        
+        for(int i=0; i<8; i++) {
+            
+ 
+        }
+    }
+
+    
     return true;
 }
 short Actor::getColor(void)
@@ -108,7 +128,7 @@ void Actor::selectOnePiece(Piece* piece)
 void Actor::reMovePiece(Piece *piece)
 {
     vector<Piece*>::iterator it = alivePieces.begin();
-    for(;it!=alivePieces.end(); it++){
+    for(;it!=alivePieces.end(); it++) {
         if(piece == *it){
             alivePieces.erase(it);
             break;
