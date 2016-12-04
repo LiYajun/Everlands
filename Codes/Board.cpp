@@ -51,7 +51,7 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
     {
         for (int w = 0; w < m_maxWidth; w++)
         {
-            int id = h * m_maxWidth + w;
+            int id = w + h * m_maxWidth;
 
             // 颜色
             int color = 0;
