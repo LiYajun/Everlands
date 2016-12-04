@@ -22,7 +22,7 @@ GameManager *GameManager::shareGameManager(Node* node)
     if(gameShare == nullptr)
     {
         gameShare = new (std::nothrow) GameManager();
-        if (gameShare && gameShare->init())
+        if (gameShare && gameShare->init(node))
         {
             return gameShare;
         }else
@@ -41,16 +41,17 @@ GameManager *GameManager::shareGameManager(Node* node)
 bool GameManager::init(Node* node )
 {
     do {
+        layerNode = node;
         creaeteAll();
     }while(0);
     return true;
 }
 //创建所有选手， 地图， 棋子， 裁判
-bool GameManager::creaeteAll(Node* node )
+bool GameManager::creaeteAll(void)
 {
     do {
         judge           =   Judge::create();
-        map             =   Board::create(node,NULL);
+        map             =   Board::create(layerNode,NULL);
         inputController =   InputControl::create();
         
     }while(0);

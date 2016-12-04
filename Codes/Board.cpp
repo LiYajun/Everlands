@@ -35,6 +35,7 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
     if ( fileName.empty())
     {
         fileName =  "Images/board.png";
+        fileName = "board.png";
     }
     m_bg = Sprite::create(fileName);
     parent->addChild(m_bg);

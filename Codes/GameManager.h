@@ -65,7 +65,7 @@ public:
     
 private:
 
-    bool creaeteAll(Node* node = nullptr);
+    bool creaeteAll(void);
     bool init(Node* node = nullptr);
     void clearInfo(void);
 private:
