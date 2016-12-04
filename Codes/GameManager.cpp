@@ -53,7 +53,7 @@ bool GameManager::creaeteAll(Node* node)
     if(node != nullptr) {
         layerNode       =   node;
         judge           =   Judge::create();
-        map             =   Board::create(layerNode,NULL);
+        map             =   Board::create(layerNode,"");
         inputController =   InputControl::create();
         
         return true;

@@ -174,4 +174,8 @@ void Actor::switchStatu( )
 Actor::~Actor()
 {
     //清除内部申请的内存
+    vector<Piece*>::iterator it = allPieces.begin();
+    for(;it<allPieces.end(); it++){
+        delete (*it);
+    }
 }
