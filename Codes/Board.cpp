@@ -1,74 +1,24 @@
 #include "Board.h"
 
 
-Board::Board(char *fileName /* = NULL */)
-{
-    if (NULL == fileName)
-    {
-        m_bg = Sprite::create("Images/board.png");
-
-        // 竖屏
-        m_maxWidth  = 7;
-        m_maxHeight = 9;
-
-        for (int i = 0; i < m_maxWidth; i++)
-        {
-            for (int j = 0; j < m_maxHeight; j++)
-            {
-                int id = i + j * m_maxWidth;
-
-                // 颜色
-                int color = 0;
-                if (2 == id || 3 == id || 4 == id || 10 == id)
-                {
-                    color = 1;
-                }
-                else if (52 == id || 58 == id || 59 == id || 60 == id)
-                {
-                    color = 2;
-                }
-
-                // 类型
-                TileType type = TileType::Land;
-                if (2 == id || 4 == id || 10 == id ||
-                    52 == id || 58 == id || 60 == id)
-                {
-                    type = TileType::Trap;
-                }
-                else if (3 == id || 59 == id)
-                {
-                    type = TileType::Nest;
-                }
-                else if ((1 == i || 2 == i || 4 == i || 5 == i) &&
-                         (j > 2 && j < 6))
-                {
-                    type = TileType::River;
-                }
-
-                // 逻辑坐标
-                Coord coord = {i, j};
-
-                BoardTile *tile = new BoardTile(color, type, coord, NULL);
-                m_tiles.push_back(tile);
-            }
-        }
-    }
-}
+Board::Board()
+{}
 
 Board::~Board()
 {
     for (int i = 0; i < m_tiles.size(); i++)
     {
+        m_tiles[i]->setPiece(NULL);
         delete m_tiles[i];
     }
 
     m_tiles.clear();
 }
 
-Board *Board::create(char *fileName /* = NULL */)
+Board *Board::create(Sprite *parent, char *fileName /* = NULL */)
 {
     Board *pRet = new(std::nothrow) Board();
-    if (pRet && pRet->init(fileName))
+    if (pRet && pRet->init(parent, fileName))
     {
         return pRet;
     }
@@ -80,54 +30,58 @@ Board *Board::create(char *fileName /* = NULL */)
     }
 }
 
-bool Board::init(char *fileName /* = NULL */)
+bool Board::init(Sprite *parent, char *fileName /* = NULL */)
 {
     if (NULL == fileName)
     {
-        // 竖屏
-        m_maxWidth  = 7;
-        m_maxHeight = 9;
+        fileName = "Images/board.png";
+    }
+    m_bg = Sprite::create(fileName);
+    parent->addChild(m_bg);
 
-        for (int i = 0; i < m_maxWidth; i++)
+    // 竖屏
+    m_maxWidth  = 7;
+    m_maxHeight = 9;
+
+    for (int i = 0; i < m_maxWidth; i++)
+    {
+        for (int j = 0; j < m_maxHeight; j++)
         {
-            for (int j = 0; j < m_maxHeight; j++)
+            int id = i + j * m_maxWidth;
+
+            // 颜色
+            int color = 0;
+            if (2 == id || 3 == id || 4 == id || 10 == id)
             {
-                int id = i + j * m_maxWidth;
-
-                // 颜色
-                int color = 0;
-                if (2 == id || 3 == id || 4 == id || 10 == id)
-                {
-                    color = 1;
-                }
-                else if (52 == id || 58 == id || 59 == id || 60 == id)
-                {
-                    color = 2;
-                }
-
-                // 类型
-                TileType type = TileType::Land;
-                if (2 == id || 4 == id || 10 == id ||
-                    52 == id || 58 == id || 60 == id)
-                {
-                    type = TileType::Trap;
-                }
-                else if (3 == id || 59 == id)
-                {
-                    type = TileType::Nest;
-                }
-                else if ((1 == i || 2 == i || 4 == i || 5 == i) &&
-                         (j > 2 && j < 6))
-                {
-                    type = TileType::River;
-                }
-
-                // 逻辑坐标
-                Coord coord = {i, j};
-
-                BoardTile *tile = new BoardTile(color, type, coord, NULL);
-                m_tiles.push_back(tile);
+                color = 1;
             }
+            else if (52 == id || 58 == id || 59 == id || 60 == id)
+            {
+                color = 2;
+            }
+
+            // 类型
+            TileType type = TileType::Land;
+            if (2 == id || 4 == id || 10 == id ||
+                52 == id || 58 == id || 60 == id)
+            {
+                type = TileType::Trap;
+            }
+            else if (3 == id || 59 == id)
+            {
+                type = TileType::Nest;
+            }
+            else if ((1 == i || 2 == i || 4 == i || 5 == i) &&
+                     (j > 2 && j < 6))
+            {
+                type = TileType::River;
+            }
+
+            // 逻辑坐标
+            Coord coord = {i, j};
+
+            BoardTile *tile = new BoardTile(color, type, coord, NULL);
+            m_tiles.push_back(tile);
         }
     }
 

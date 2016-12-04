@@ -37,6 +37,13 @@ bool Judge::init()
 {
     m_curIndex = 0;
 
+    for (int i = 0; i < 2; i++)
+    {
+        Actor *actor = Actor::create(i + 1);
+        m_allActors.push_back(actor);
+        m_aliveActors.push_back(actor);
+    }
+
     return true;
 }
 

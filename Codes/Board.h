@@ -11,16 +11,14 @@ using std::vector;
 class Board
 {
 public:
-    Board(char *fileName = NULL);
+    Board();
     virtual ~Board();
     
-    static Board *create(char *fileName = NULL);
-    virtual bool init(char *fileName = NULL);
+    static Board *create(Sprite *parent, char *fileName = NULL);
+    virtual bool init(Sprite *parent, char *fileName = NULL);
 
     BoardTile *getBoardTile(Coord coord);       // 根据逻辑坐标返回地图片元
     void updateTiles(vector<Coord> coords);     // 更新地图片元
-
-    Sprite *getBG();
 
 private:
     int                 m_maxWidth;             // 宽
