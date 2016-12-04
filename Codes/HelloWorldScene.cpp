@@ -29,7 +29,7 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
+   /*
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -79,7 +79,8 @@ bool HelloWorld::init()
     sp->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     
     addChild(sp);
-    
+    */
+    //Size s = this->getContentSize();
     gameManager = GameManager::shareGameManager( );
     gameManager->creaeteAll(this);
     auto dispatcher = Director::getInstance()->getEventDispatcher();
