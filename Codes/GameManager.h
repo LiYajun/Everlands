@@ -54,20 +54,21 @@ struct  AfterInfo
 class GameManager
 {
 public:
-    static GameManager * shareGameManager(Node* node = nullptr);
-    void destoryAll(void);
-    void resetAll(void);
+    static GameManager * shareGameManager();
+
+    bool creaeteAll(Node* node = nullptr);
+
+    Board *         getMap();
+    InputControl *  getInputControl();
     bool gameLogic(void);
     Info *      info;
     AfterInfo *     afterInfo;
-    Board *         getMap();
-    InputControl *  getInputControl();
-    
 private:
-
-    bool creaeteAll(void);
-    bool init(Node* node = nullptr);
+    bool init( );
     void clearInfo(void);
+    void destoryAll(void);
+    void resetAll(void);
+    
 private:
 
  

@@ -38,21 +38,35 @@ bool Actor::init(short color)
     this->statu = no_choose_piece_statu;
     actorID++;
     
+    typedef struct {
+        Coord pos;
+        PieceType type;
+        int attack;
+        int aStep;
+    } pieceInfo;
+    
     if(color == 0) {
-        Coord pos[8] ={
-            {0,0},
-            {0,2},
-            {1,1},
-            {2,2},
-            {4,2},
-            {5,1},
-            {6,0},
-            {6,2}
+        
+        pieceInfo ary[8] ={
+            {{0,0},Tiger,       8,  3} ,
+            {{0,2},Elephant,    10, 1},
+            {{1,1},Cat,         4,  1},
+            {{2,2},Wolf,        6,  1},
+            {{4,2},Leopard,     7,  1},
+            {{5,1},Dog,         5,  1},
+            {{6,0},Lion,        9,  3},
+            {{6,2},Mouse,       3,  1}
         };
         
         for(int i=0; i<8; i++) {
             
- 
+            Piece * piece = Piece::create(color,
+                                          ary[i].pos,
+                                          ary[i].type,
+                                          ary[i].attack,
+                                          ary[i].aStep);
+            allPieces.push_back(piece);
+            alivePieces.push_back(piece);
         }
     }
 
@@ -160,4 +174,8 @@ void Actor::switchStatu( )
 Actor::~Actor()
 {
     //清除内部申请的内存
+    vector<Piece*>::iterator it = allPieces.begin();
+    for(;it<allPieces.end(); it++){
+        delete (*it);
+    }
 }
