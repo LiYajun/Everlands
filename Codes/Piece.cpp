@@ -73,21 +73,21 @@ void Piece::initSprite(PieceType type, short aColor)
 {
     std::string str ="";
     if(type == Elephant)
-        str = "elephant_";
+        str = "Images/elephant_";
     else if(type == Lion)
-        str = "lion_";
+        str = "Images/lion_";
     else if(type == Tiger)
-        str = "tiger_";
+        str = "Images/tiger_";
     else if(type == Leopard)
-        str = "leopard_";
+        str = "Images/leopard_";
     else if(type == Wolf)
-        str = "wolf_";
+        str = "Images/wolf_";
     else if(type == Dog)
-        str = "dog_";
+        str = "Images/dog_";
     else if(type == Cat)
-        str = "cat_";
+        str = "Images/cat_";
     else if(type == Mouse)
-        str = "mouse_";
+        str = "Images/mouse_";
     else
         str ="";
     if(aColor == 1)
