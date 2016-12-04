@@ -16,6 +16,7 @@ public:
     
     static Board *create(Node *parent,  std::string fileName = NULL);
     virtual bool init(Node *parent, std::string fileName = NULL);
+    void addPieceImg(Node *node);
 
     BoardTile *getBoardTile(Coord coord);       // 根据逻辑坐标返回地图片元
     void updateTiles(vector<Coord> coords);     // 更新地图片元
