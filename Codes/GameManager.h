@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Coord.h"
+#include "cocos2d.h"
 
 using namespace std;
 using std::vector;
