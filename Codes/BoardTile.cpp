@@ -16,5 +16,4 @@ BoardTile::BoardTile(int color, TileType type, Coord coord, Piece *piece)
 void  BoardTile::setPiece(Piece *piece)
 {
     m_piece = piece;
- 
 }

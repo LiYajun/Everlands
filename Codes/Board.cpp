@@ -47,11 +47,11 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
     m_maxWidth  = 7;
     m_maxHeight = 9;
 
-    for (int i = 0; i < m_maxWidth; i++)
+    for (int h = 0; h < m_maxHeight; h++)
     {
-        for (int j = 0; j < m_maxHeight; j++)
+        for (int w = 0; w < m_maxWidth; w++)
         {
-            int id = i + j * m_maxWidth;
+            int id = h * m_maxWidth + w;
 
             // 颜色
             int color = 0;
@@ -75,14 +75,14 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
             {
                 type = TileType::Nest;
             }
-            else if ((1 == i || 2 == i || 4 == i || 5 == i) &&
-                     (j > 2 && j < 6))
+            else if ((1 == w || 2 == w || 4 == w || 5 == w) &&
+                     (h > 2 && h < 6))
             {
                 type = TileType::River;
             }
 
             // 逻辑坐标
-            Coord coord = {i, j};
+            Coord coord = {w, h};
 
             BoardTile *tile = new BoardTile(color, type, coord, NULL);
             m_tiles.push_back(tile);
