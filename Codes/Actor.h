@@ -63,7 +63,7 @@ public:
     void switchStatu( void );
     
     friend class Judge;
-    
+    friend class Board;
 private:
     unsigned int   ID;                              //编号,每个对象有一个唯一的
     short       color;                              //阵营（颜色）

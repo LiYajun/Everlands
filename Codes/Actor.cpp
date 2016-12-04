@@ -45,19 +45,27 @@ bool Actor::init(short color)
         int aStep;
     } pieceInfo;
     
-    if(color == 0) {
-        
-        pieceInfo ary[8] ={
-            {{0,0},Tiger,       8,  3} ,
-            {{0,2},Elephant,    10, 1},
-            {{1,1},Cat,         4,  1},
-            {{2,2},Wolf,        6,  1},
-            {{4,2},Leopard,     7,  1},
-            {{5,1},Dog,         5,  1},
-            {{6,0},Lion,        9,  3},
-            {{6,2},Mouse,       3,  1}
-        };
-        
+    pieceInfo ary[8];
+    if(color == 1) {
+        ary[0] =  {{0,0},Tiger,       8,  3};
+        ary[1] =  {{0,2},Elephant,    10, 1};
+        ary[2] =  {{1,1},Cat,         4,  1};
+        ary[3] =  {{2,2},Wolf,        6,  1};
+        ary[4] =  {{4,2},Leopard,     7,  1};
+        ary[5] =  {{5,1},Dog,         5,  1};
+        ary[6] =  {{6,0},Lion,        9,  3};
+        ary[7] =  {{6,2},Mouse,       3,  1};
+    } else if(color == 2) {
+        ary[0] =  {{6,8},Tiger,       8,  3};
+        ary[1] =  {{6,6},Elephant,    10, 1};
+        ary[2] =  {{5,7},Cat,         4,  1};
+        ary[3] =  {{4,6},Wolf,        6,  1};
+        ary[4] =  {{2,6},Leopard,     7,  1};
+        ary[5] =  {{1,7},Dog,         5,  1};
+        ary[6] =  {{0,8},Lion,        9,  3};
+        ary[7] =  {{0,6},Mouse,       3,  1};
+    }
+    
         for(int i=0; i<8; i++) {
             
             Piece * piece = Piece::create(color,
@@ -68,7 +76,7 @@ bool Actor::init(short color)
             allPieces.push_back(piece);
             alivePieces.push_back(piece);
         }
-    }
+ 
 
     
     return true;
@@ -174,6 +182,7 @@ void Actor::switchStatu( )
 Actor::~Actor()
 {
     //清除内部申请的内存
+    selectedPieceRef = nullptr;
     vector<Piece*>::iterator it = allPieces.begin();
     for(;it<allPieces.end(); it++){
         delete (*it);
