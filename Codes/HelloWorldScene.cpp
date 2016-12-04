@@ -108,7 +108,7 @@ bool HelloWorld::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_even
 }
 void HelloWorld::update(float dt)
 {
-    log("update called");
+    //log("update called");
     gameManager->gameLogic();
 }
 void HelloWorld::menuCloseCallback(Ref* pSender)

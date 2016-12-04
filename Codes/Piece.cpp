@@ -95,10 +95,9 @@ void Piece::initSprite(PieceType type, short aColor)
     else
         str.append("2.png");
     showSp = Sprite::create(str);
-    showSp->setContentSize(Size(90, 90));
-    showSp->setScale(0.5);
+    showSp->setScale(0.4);
     Size s = showSp->getContentSize();
-    log("12345");
+    log("showSp contentSize %f, %f", s.width, s.height);
 }
 void Piece::setLogicCoord(Coord aCoord)
 {
