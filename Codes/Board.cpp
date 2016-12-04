@@ -39,6 +39,9 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
     m_bg = Sprite::create(fileName);
     parent->addChild(m_bg);
 
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    m_bg->setPosition(visibleSize.width / 2, visibleSize.height / 2);
+
     // 竖屏
     m_maxWidth  = 7;
     m_maxHeight = 9;
@@ -86,6 +89,11 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
     }
 
     return true;
+}
+
+void Board::addPieceImg(Node *node)
+{
+
 }
 
 BoardTile *Board::getBoardTile(Coord coord)
