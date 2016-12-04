@@ -96,6 +96,7 @@ void Actor::clickMapTile(BoardTile *mapTile)
     }
     
 }
+
 void Actor::selectOnePiece(Piece* piece)
 {
     if(this->selectedPieceRef != nullptr){
@@ -103,6 +104,7 @@ void Actor::selectOnePiece(Piece* piece)
     }
     this->selectedPieceRef = piece;
 }
+
 void Actor::reMovePiece(Piece *piece)
 {
     vector<Piece*>::iterator it = alivePieces.begin();

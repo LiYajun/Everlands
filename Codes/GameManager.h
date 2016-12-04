@@ -57,7 +57,7 @@ class GameManager
 public:
     static GameManager * shareGameManager(void);
     void destoryAll(void);
-    void resetALl(void);
+    void resetAll(void);
     bool gameLogic(void);
     Info *      info;
     AfterInfo * afterInfo;

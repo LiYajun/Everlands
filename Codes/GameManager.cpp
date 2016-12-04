@@ -60,7 +60,7 @@ void GameManager::destoryAll(void)
 {
     
 }
-void GameManager::resetALl(void)
+void GameManager::resetAll(void)
 {
     
 }
