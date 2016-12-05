@@ -36,7 +36,10 @@ typedef enum {
     Mouse
 }PieceType;
 
-
+typedef enum {
+    Normal,
+    selected,
+}PieceStatu;
 
 class Piece
 {
@@ -56,11 +59,10 @@ public:
     short getColor(void);
     
     PieceType getType(void);
-    
+    int   getAttack(void);
     void setLogicCoord(Coord aCoord);
     
-    
-    
+    void changeStatu(PieceStatu statu);
     
 private:
     

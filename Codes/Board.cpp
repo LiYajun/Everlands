@@ -94,6 +94,8 @@ bool Board::init(Node *parent, std::string  fileName /* = NULL */)
 
 void Board::addPiece(Piece *piece)
 {
+    int x = piece->logicCoord.x;
+    int y = piece->logicCoord.y;
     getBoardTile(piece->logicCoord)->setPiece(piece);
 
     Vec2 p =  GameManager::shareGameManager()->getInputControl()->convertCoordToVec2(piece->logicCoord);

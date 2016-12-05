@@ -122,7 +122,12 @@ void Actor::clickMapTile(BoardTile *mapTile)
         {
             if(piece->getColor() == this->color) //选择的自己的棋子
             {
-                share->info->whatToDo = wantSelectPiece;
+                if(selectedPieceRef == piece) { //点击自己不处理
+                    share->info->whatToDo = invaildOper;
+                    return;
+                }
+                
+                share->info->whatToDo = wantChangeSelect;
                 share->info->coords.pop_back();
                 share->info->coords.push_back(coord);
             }else                                //选择别人的棋子，吃棋子
@@ -144,23 +149,28 @@ void Actor::clickMapTile(BoardTile *mapTile)
 
 void Actor::selectOnePiece(Piece* piece)
 {
-    if(this->selectedPieceRef != nullptr){
-        
+    if(selectedPieceRef != nullptr){
+        selectedPieceRef->changeStatu(Normal);
     }
-    this->selectedPieceRef = piece;
+        selectedPieceRef = piece;
+        selectedPieceRef->changeStatu(selected);
 }
 
 void Actor::reMovePiece(Piece *piece)
 {
-    vector<Piece*>::iterator it = alivePieces.begin();
-    for(;it!=alivePieces.end(); it++) {
-        if(piece == *it){
-            alivePieces.erase(it);
+//    vector<Piece*>::iterator it = alivePieces.begin();
+//    for(;it!=alivePieces.end(); it++) {
+//        if(piece == *it){
+//            alivePieces.erase(it);
+//            break;
+//        }
+//    }
+    for(int i=0; i< alivePieces.size(); i++) {
+        if(piece == alivePieces[i]){
+            alivePieces.erase(alivePieces.begin()+i);
             break;
         }
     }
-//    cout<<"error, can't find the piece in alivePieces";
-//    exit(0);
 }
 void Actor::changePieceLogicCoord(Coord LogicCoord)
 {
@@ -176,7 +186,11 @@ void Actor::switchStatu( )
     if(oldStatu == no_choose_piece_statu) {
          statu = selected_one_piece_statu;
     }else if(oldStatu == selected_one_piece_statu){
-         statu = wait_for_statu;
+        if(selectedPieceRef!=NULL){
+            selectedPieceRef->changeStatu(Normal);
+        }
+         selectedPieceRef = NULL;
+         statu = no_choose_piece_statu;
     }else  {
         
     }

@@ -93,12 +93,20 @@ bool GameManager::gameLogic(void)
             Piece * piece = oneMapTile->getPiece();
             currentActor->selectOnePiece(piece);
             currentActor->switchStatu();
-        }else if(info->whatToDo == wantEatOtherPiece) {
+        }
+        else if(info->whatToDo == wantChangeSelect) {
+            Piece * piece = oneMapTile->getPiece();
+            currentActor->selectOnePiece(piece);
+        }
+        else if(info->whatToDo == wantEatOtherPiece) {
             bool canEat = judge->judgeCanMoveAndEat(info->coords);
             if(canEat == true) {
                 currentActor->changePieceLogicCoord(coord);
                 map->updateTiles(info->coords);
-                short otherColor   = oneMapTile->getColor();
+                //short otherColor   = oneMapTile->getColor();
+                short  otherColor = 0;
+                short  currColor = currentActor->getColor();
+                otherColor = (currColor+1)%3+1;
                 Actor * otherActor = judge->getActor(otherColor);
                 Piece * piece = oneMapTile->getPiece();
                 otherActor->reMovePiece(piece);
@@ -106,9 +114,10 @@ bool GameManager::gameLogic(void)
                 clearInfo();
                 afterInfo->oneStepOver = true;
             }else {
-                
+                info->coords.pop_back();
             }
-        }else if(info->whatToDo == wantMove){
+        }
+        else if(info->whatToDo == wantMove){
             bool canMove   = judge->judgeCanMove(info->coords);
             if(canMove == true) {
                 currentActor->changePieceLogicCoord(coord);
@@ -117,7 +126,7 @@ bool GameManager::gameLogic(void)
                 clearInfo();
                 afterInfo->oneStepOver = true;
             }else{
-                
+                info->coords.pop_back();
             }
         }
         
@@ -132,7 +141,7 @@ bool GameManager::gameLogic(void)
             judge->calculateGameResult();
             return false;
         }
-        
+        afterInfo->oneStepOver = false;
         judge->switchNextActor();
     }
     return true;
@@ -154,7 +163,7 @@ InputControl * GameManager::getInputControl()
 }
 void GameManager::clearInfo()
 {
-    if(info){
+    if(info!=NULL){
         info->whatToDo = invaildOper;
         info->coords.clear();
     }
