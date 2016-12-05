@@ -111,6 +111,9 @@ void Piece:: changeStatu(PieceStatu statu)
             label->setPosition( Vec2( s.width/2 , s.height/2));
             label->setColor(Color3B(0, 0, 0));
             showSp->addChild(label);
+        }else if(statu == hidden)
+        {
+            showSp->setVisible(false);
         }
     }
 }

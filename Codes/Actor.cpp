@@ -167,6 +167,7 @@ void Actor::reMovePiece(Piece *piece)
 //    }
     for(int i=0; i< alivePieces.size(); i++) {
         if(piece == alivePieces[i]){
+            piece->changeStatu(hidden);
             alivePieces.erase(alivePieces.begin()+i);
             break;
         }

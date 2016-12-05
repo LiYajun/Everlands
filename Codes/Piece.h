@@ -39,6 +39,7 @@ typedef enum {
 typedef enum {
     Normal,
     selected,
+    hidden,
 }PieceStatu;
 
 class Piece

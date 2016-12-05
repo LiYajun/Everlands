@@ -102,15 +102,20 @@ bool GameManager::gameLogic(void)
             bool canEat = judge->judgeCanMoveAndEat(info->coords);
             if(canEat == true) {
                 currentActor->changePieceLogicCoord(coord);
-                map->updateTiles(info->coords);
+                
                 //short otherColor   = oneMapTile->getColor();
                 short  otherColor = 0;
                 short  currColor = currentActor->getColor();
-                otherColor = (currColor+1)%3+1;
+                otherColor =  currColor+1;
+                if(otherColor == 3)
+                {
+                    otherColor = 1;
+                }
                 Actor * otherActor = judge->getActor(otherColor);
                 Piece * piece = oneMapTile->getPiece();
                 otherActor->reMovePiece(piece);
                 currentActor->switchStatu();
+                map->updateTiles(info->coords);
                 clearInfo();
                 afterInfo->oneStepOver = true;
             }else {
