@@ -99,6 +99,24 @@ void Piece::initSprite(PieceType type, short aColor)
     Size s = showSp->getContentSize();
     log("showSp contentSize %f, %f", s.width, s.height);
 }
+
+void Piece:: changeStatu(PieceStatu statu)
+{
+    if(showSp) {
+        if(statu == Normal){
+            showSp->removeAllChildren();
+        }else if(statu == selected){
+            auto label = Label::createWithTTF("selected", "fonts/Marker Felt.ttf", 32);
+            Size s = showSp->getContentSize();
+            label->setPosition( Vec2( s.width/2 , s.height/2));
+            label->setColor(Color3B(0, 0, 0));
+            showSp->addChild(label);
+        }else if(statu == hidden)
+        {
+            showSp->setVisible(false);
+        }
+    }
+}
 void Piece::setLogicCoord(Coord aCoord)
 {
     logicCoord = aCoord;
@@ -110,6 +128,11 @@ void Piece::setLogicCoord(Coord aCoord)
 short Piece::getColor(void)
 {
     return  this->color;
+}
+
+int   Piece::getAttack(void)
+{
+    return  attackValue;
 }
 PieceType Piece::getType(void)
 {

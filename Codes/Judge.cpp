@@ -194,7 +194,8 @@ bool Judge::judgeCanMoveAndEat(vector<Coord> coords)
     }
     else
     {
-        return (piece1->getType() <= piece2->getType());
+       // return (piece1->getType() <= piece2->getType());
+        return  (piece1->getAttack() >= piece2->getAttack());
     }
 }
 

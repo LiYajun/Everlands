@@ -33,8 +33,9 @@ typedef enum
 {
     invaildOper       =  0,
     wantSelectPiece   =  1,
-    wantEatOtherPiece =  2,
-    wantMove          =  3,
+    wantChangeSelect  =  2,
+    wantEatOtherPiece =  3,
+    wantMove          =  4,
 }infoType;
 
 struct  Info
