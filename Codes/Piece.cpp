@@ -95,7 +95,7 @@ void Piece::initSprite(PieceType type, short aColor)
     else
         str.append("2.png");
     showSp = Sprite::create(str);
-    showSp->setScale(0.4);
+    //showSp->setScale(0.4);
     Size s = showSp->getContentSize();
     log("showSp contentSize %f, %f", s.width, s.height);
 }
