@@ -32,10 +32,10 @@ bool InputControl::init()
     do{
         deviceWidPixel = 1024*2.0;
         deviceHeiPixel = 768*2.0;
-        pieceOffsetX   = 90.0;
-        pieceOffsetY   = 115.0;
-        pieceWid = 100.0;
-        pieceHei = 100.0;
+        pieceOffsetX   = 88.0;
+        pieceOffsetY   = 116.0;
+        pieceWid = 197.5/2.0;
+        pieceHei = 197.5/2.0;
         coordMaxX      = 7;
         coordMaxY      = 9;
         
@@ -75,8 +75,8 @@ Vec2 InputControl::convertCoordToVec2(const Coord& coord)
 Coord InputControl::convertTouchToCoord(Touch * touchCoord)
 {
     Vec2 pos = touchCoord->getLocation();
-    int coordX = (pos.x - pieceOffsetX)/pieceWid;
-    int coordY = (pos.y - pieceOffsetY)/pieceHei;
+    int coordX = (pos.x - pieceOffsetX+pieceWid/2.0)/pieceWid;
+    int coordY = (pos.y - pieceOffsetY+pieceHei/2.0)/pieceHei;
     if(coordX>=0 && coordY>=0 && coordX < coordMaxX && coordY < coordMaxY){
         Coord coord = Coord(coordX, coordY);
         return coord;
